@@ -1,0 +1,6 @@
+class $1Admin(admin.ModelAdmin):
+    list_display = ('$2',)
+    save_on_top = True
+    $0
+
+admin.site.register(${1:ModelName}, $1Admin)

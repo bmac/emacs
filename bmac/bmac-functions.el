@@ -1,0 +1,95 @@
+;; Show an ASCII table
+(defun ascii-table ()
+  "Show a table of ASCII characters by decimal, hex, and octal value."
+
+  (interactive)
+  (switch-to-buffer "*ASCII*")
+  (erase-buffer)
+  (let ((min 1) (max 255)
+        (special-chars '(
+                         (1 . "%c  SOH (start of heading)")
+                         (2 . "%c  STX (start of text)")
+                         (3 . "%c  ETX (end of text)")
+                         (4 . "%c  EOT (end of transmission)")
+                         (5 . "%c  ENQ (enquiry)")
+                         (6 . "%c  ACK (acknowledge)")
+                         (7 . "%c  BEL (bell)")
+                         (8 . "%c  BS  (backspace)")
+                         (9 . "    TAB (horizontal tab)")
+                         (10 . "    LF  (NL line feed, new line)")
+                         (11 . "%c  VT  (vertical tab)")
+                         (12 . "    FF  (NP form feed, new page)")
+                         (13 . "%c  CR  (carriage return)")
+                         (14 . "%c  SO  (shift out)")
+                         (15 . "%c  SI  (shift in)")
+                         (16 . "%c  DLE (data link escape)")
+                         (17 . "%c  DC1 (device control 1)")
+                         (18 . "%c  DC2 (device control 2)")
+                         (19 . "%c  DC3 (device control 3)")
+                         (20 . "%c  DC4 (device control 4)")
+                         (21 . "%c  NAK (negative acknowledge)")
+                         (22 . "%c  SYN (synchronous idle)")
+                         (23 . "%c  ETB (end of trans. block)")
+                         (24 . "%c  CAN (cancel)")
+                         (25 . "%c  EM  (end of medium)")
+                         (26 . "%c  SUB (substitute)")
+                         (27 . "%c  ESC (escape)")
+                         (28 . "%c  FS  (file separator)")
+                         (29 . "%c  GS  (group separator)")
+                         (30 . "%c  RS  (record separator)")
+                         (31 . "%c  US  (unit separator)")
+                         (32 . "%c       (space)")
+                         (9999)
+                         )))
+    (insert (format "ASCII characters %d-%d\n\n" min max))
+    (insert " Dec   Hex   Oct    Character\n")
+    (let ((i 0))
+      (while (< i 60)
+        (insert "=")
+        (setq i (+ i 1))))
+    (insert "\n")
+    (let ((i min))
+      (while (<= i max)
+        (let ((line "%4d  0x%02X  %04o    ") (char "%c"))
+          (while (> i (car (car special-chars)))
+            (setq special-chars (cdr special-chars)))
+          (if (= (car (car special-chars)) i)
+              (setq char (cdr (car special-chars))))
+          (insert (format (concat line char "\n") i i i i))
+          (setq i (+ i 1))))))
+  (beginning-of-buffer))
+
+
+
+;;Indent whole buffer
+(defun iwb ()
+  "indent whole buffer"
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max)))
+
+
+(defun tj-find-file-check-make-large-file-read-only-hook ()
+"If a file is over a given size, make the buffer read only."
+(when (> (buffer-size) (* 1024 1024))
+(setq buffer-read-only t)
+(buffer-disable-undo)
+(message "Buffer is set to read-only because it is large. Undo also disabled.")))
+
+
+(add-hook 'find-file-hooks 'tj-find-file-check-make-large-file-read-only-hook)
+
+
+;Copy-only from M-x all things emacs.
+(defun copy-line (&optional arg)
+"Do a kill-line but copy rather than kill. This function directly calls
+kill-line, so see documentation of kill-line for how to use it including prefix
+argument and relevant variables. This function works by temporarily making the
+buffer read-only, so I suggest setting kill-read-only-ok to t."
+(interactive "P")
+(toggle-read-only 1)
+(kill-line arg)
+(toggle-read-only 0))
+(setq-default kill-read-only-ok t)
+(global-set-key "\C-c\C-k" 'copy-line)
