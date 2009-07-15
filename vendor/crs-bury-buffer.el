@@ -41,6 +41,10 @@
            (nth n my-buffer-list)))))
 
     (global-set-key (kbd "C-<tab>") 'crs-bury-buffer)
-    (global-set-key (kbd "C-M-<tab>") (lambda ()
+    (global-set-key (kbd "C-S-<tab>") (lambda ()
                                            (interactive)
                                            (crs-bury-buffer -1)))
+
+(global-set-key (kbd "C-S-<iso-lefttab>") (lambda ()
+					    (interactive)
+					    (crs-bury-buffer -1)))
