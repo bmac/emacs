@@ -37,3 +37,16 @@
         (y-or-n-p-with-timeout
          "Really exit Emacs (automatically exits in 5 secs)? " 5 t)))
 (setq x-select-enable-clipboard t)
+
+
+;;backup files in .emacs.d/backups
+;;when useing tramp store backups there as well
+(add-to-list 'backup-directory-alist
+	     (cons "." "~/.emacs.d/backups/"))
+(setq tramp-backup-directory-alist backup-directory-alist)
+
+;;lets see how this goes
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)
