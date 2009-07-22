@@ -41,6 +41,10 @@
          "Really exit Emacs (automatically exits in 5 secs)? " 5 t)))
 (setq x-select-enable-clipboard t)
 
+;;set text-mode as the default major mode
+;;fundamental is kinda useless imo
+(setq default-major-mode 'text-mode)
+
 
 ;;backup files in .emacs.d/backups
 ;;when useing tramp store backups there as well
