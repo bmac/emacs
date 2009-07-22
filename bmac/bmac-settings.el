@@ -20,6 +20,9 @@
 (global-set-key "\C-z" nil)
 
 
+;;change Backspace to remove both () when point is in the middle
+(global-set-key (kbd "<DEL>") 'backward-delete-char-untabify)
+
 ;;lium.el from http://stud4.tuwien.ac.at/~e0225855/linum/linum.html
 (require 'linum)
 (global-linum-mode t)
