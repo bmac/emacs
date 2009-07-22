@@ -50,8 +50,7 @@
 (load "bmac-javascript.el")
 
 (when (>= emacs-major-version 23)
-  (load "bmac-emacs23.el")
-  )
+  (load "bmac-emacs23.el"))
 
 ;;(global-hl-line-mode 1)
  
@@ -66,6 +65,8 @@
 (require 'browse-kill-ring)
 
 (load "light-symbol.el")
+
+(load "paren-experiment.el")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
