@@ -7,5 +7,5 @@
 ;;http://www.emacswiki.org/cgi-bin/wiki?ColorTheme
 (require 'color-theme)
 (color-theme-initialize)
-(load "color-theme-tango.el")
-(color-theme-tango)
+(load "color-theme-bmac.el")
+(color-theme-bmac)

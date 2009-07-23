@@ -1,15 +1,14 @@
-;;; Ryan's color theme.
-;;; Based on color-theme-tango by danranx.
+;;; based on danranx@gmail.com's color theme tango
 (defun color-theme-bmac ()
   "A color theme based on Tango Palette."
   (interactive)
   (color-theme-install
-   '(color-theme-bmac
-     (;(background-color . "gray7")
+   '(color-theme-tango
+     ((background-color . "#2e3436")
       (background-mode . dark)
       (border-color . "#888a85")
-      (cursor-color . "#fce94f")
-      (foreground-color . "#eeeeec")
+      (cursor-color . "white")
+      (foreground-color . "#eeeeee")
       (mouse-color . "#8ae234"))
      ((help-highlight-face . underline)
       (ibuffer-dired-buffer-face . font-lock-function-name-face)
@@ -24,19 +23,19 @@
      (mode-line ((t (:foreground "#eeeeec" :background "#555753"))))
      (region ((t (:background "#555753"))))
      (font-lock-builtin-face ((t (:foreground "#729fcf"))))
-     (font-lock-comment-face ((t (:foreground "#888a85"))))
-     (font-lock-constant-face ((t (:foreground "#8ae234"))))
-     (font-lock-doc-face ((t (:foreground "#888a85"))))
+     (font-lock-comment-face ((t (:foreground "#9fb6cd"))))
+     (font-lock-constant-face ((t (:foreground "#00c5cd" :bold t))))
+     (font-lock-doc-face ((t (:foreground "#778899"))))
      (font-lock-keyword-face ((t (:foreground "#729fcf" :bold t))))
-     (font-lock-string-face ((t (:foreground "#ad7fa8" :italic t))))
-     (font-lock-type-face ((t (:foreground "#8ae234" :bold t))))
+     (font-lock-string-face ((t (:foreground "#9acd32"))))
+     (font-lock-type-face ((t (:foreground "#ee9a49" :bold t))));; caral #ff7256
      (font-lock-variable-name-face ((t (:foreground "#eeeeec"))))
      (font-lock-warning-face ((t (:bold t :foreground "#f57900"))))
-     (font-lock-function-name-face ((t (:foreground "#edd400" :bold t :italic t))))
+     (font-lock-function-name-face ((t (:foreground "#9fb6cd" :bold t)))) ;;orange "#ee7600"
      (comint-highlight-input ((t (:italic t :bold t))))
      (comint-highlight-prompt ((t (:foreground "#8ae234"))))
-     (isearch ((t (:background "#f57900" :foreground "#2e3436"))))
-     (isearch-lazy-highlight-face ((t (:foreground "#2e3436" :background "#e9b96e"))))
+     (isearch ((t (:background "#7ec0ee" :foreground "#2e3436"))))
+     (isearch-lazy-highlight-face ((t (:foreground "white" :background "#6c7b8b"))))
      (show-paren-match-face ((t (:foreground "#2e3436" :background "#73d216"))))
      (show-paren-mismatch-face ((t (:background "#ad7fa8" :foreground "#2e3436"))))
      (minibuffer-prompt ((t (:foreground "#729fcf" :bold t))))
