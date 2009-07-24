@@ -48,7 +48,7 @@
   "*Number of seconds of idle time to wait before highlighting.
 If this variable is set to 0, no idle time is required.")
 
-(defvar light-symbol-face 'hi-blue
+(defvar light-symbol-face 'isearch-lazy-highlight-face
   "*Face to use when highlighting.
 Default is the `hi-blue' face from `hi-lock'.")
 
