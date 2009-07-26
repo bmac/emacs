@@ -71,25 +71,44 @@
 
 
 (defun tj-find-file-check-make-large-file-read-only-hook ()
-"If a file is over a given size, make the buffer read only."
-(when (> (buffer-size) (* 1024 1024))
-(setq buffer-read-only t)
-(buffer-disable-undo)
-(message "Buffer is set to read-only because it is large. Undo also disabled.")))
+  "If a file is over a given size, make the buffer read only."
+  (when (> (buffer-size) (* 1024 1024))
+    (setq buffer-read-only t)
+    (buffer-disable-undo)
+    (message "Buffer is set to read-only because it is large. Undo also disabled.")))
 
 
 (add-hook 'find-file-hooks 'tj-find-file-check-make-large-file-read-only-hook)
 
 
-;Copy-only from M-x all things emacs.
+                                        ;Copy-only from M-x all things emacs.
 (defun copy-line (&optional arg)
-"Do a kill-line but copy rather than kill. This function directly calls
+  "Do a kill-line but copy rather than kill. This function directly calls
 kill-line, so see documentation of kill-line for how to use it including prefix
 argument and relevant variables. This function works by temporarily making the
 buffer read-only, so I suggest setting kill-read-only-ok to t."
-(interactive "P")
-(toggle-read-only 1)
-(kill-line arg)
-(toggle-read-only 0))
+  (interactive "P")
+  (toggle-read-only 1)
+  (kill-line arg)
+  (toggle-read-only 0))
 (setq-default kill-read-only-ok t)
 (global-set-key "\C-c\C-k" 'copy-line)
+
+
+(defun pretty-lambdas ()
+  (font-lock-add-keywords
+   nil `(("(?\\(lambda\\>\\)"
+	  (0 (progn (compose-region (match-beginning 1) (match-end 1)
+				    ,(make-char 'greek-iso8859-7 107))
+		    nil))))))
+
+(defun recompile-init ()
+  "Byte-compile all your dotfiles again"
+  (interactive)
+  (byte-recompile-directory dotfiles-dir 0))
+
+(defun insert-date ()
+  "Insert a time-stamp according to locale's date and time format."
+  (interactive)
+  (insert (format-time-string "%c" (current-time))))
+
