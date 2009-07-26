@@ -45,6 +45,14 @@
 ;;fundamental is kinda useless imo
 (setq default-major-mode 'text-mode)
 
+;; Transparently open compressed files
+(auto-compression-mode t)
+
+;; Save a list of recent files visited
+(recentf-mode 1)
+
+;; Highlight matching parentheses when the point is on them
+(show-paren-mode 1)
 
 ;;backup files in .emacs.d/backups
 ;;when useing tramp store backups there as well
