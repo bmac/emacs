@@ -96,6 +96,7 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
 
 
 (defun pretty-lambdas ()
+  (interactive)
   (font-lock-add-keywords
    nil `(("(?\\(lambda\\>\\)"
 	  (0 (progn (compose-region (match-beginning 1) (match-end 1)
