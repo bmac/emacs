@@ -1,3 +1,4 @@
+(load "complete-with-calc-result.el")
 
 (global-set-key [(meta ?/)] 'hippie-expand)
 
@@ -13,5 +14,6 @@
 	try-expand-list
 	try-expand-line
 	try-complete-lisp-symbol-partially
-	try-complete-lisp-symbol))
+	try-complete-lisp-symbol
+	my-try-complete-with-calc-result))
 
