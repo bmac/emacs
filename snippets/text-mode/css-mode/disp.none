@@ -1,4 +1,3 @@
-#contributor : rejeep <johan.rejeep@gmail.com>
-#name : display: none
+#name : display => none
 # --
-dislpay: none;
+display: none;
