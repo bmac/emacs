@@ -43,6 +43,8 @@
 
 (load "bmac-yasnippet.el")
 
+(load "bmac-ibuffer.el")
+
 ;;programing specific stuff
 (load "bmac-python.el")
 
