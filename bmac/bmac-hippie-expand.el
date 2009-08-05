@@ -1,4 +1,5 @@
 (load "complete-with-calc-result.el")
+(setq completion-ignore-case t)
 
 (global-set-key [(meta ?/)] 'hippie-expand)
 
