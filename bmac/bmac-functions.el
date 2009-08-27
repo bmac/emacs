@@ -99,9 +99,9 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   (interactive)
   (font-lock-add-keywords
    nil `(("(?\\(lambda\\>\\)"
-	  (0 (progn (compose-region (match-beginning 1) (match-end 1)
-				    ,(make-char 'greek-iso8859-7 107))
-		    nil))))))
+          (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                    ,(make-char 'greek-iso8859-7 107))
+                    nil))))))
 
 (defun recompile-init ()
   "Byte-compile all your dotfiles again"
@@ -113,3 +113,12 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
 
+(defun bmac-smart-advance (point)
+  "Advances the point to after the next , ) \" or ; on the current line."
+  (interactive "d")
+  ;;narrow to line macro
+  (push-mark point)
+  (save-restriction
+    (narrow-to-region (line-beginning-position) (line-end-position))
+    ;;search foward till you find a , " ) or ;
+    (re-search-forward "[,);\"]")))
