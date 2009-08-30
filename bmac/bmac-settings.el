@@ -38,7 +38,7 @@
 (setq confirm-kill-emacs
       (lambda (e)
         (y-or-n-p-with-timeout
-         "Really exit Emacs (automatically exits in 5 secs)? " 5 t)))
+         "Really exit Emacs (automatically exits in 3 secs)? " 3 t)))
 (setq x-select-enable-clipboard t)
 
 ;;set text-mode as the default major mode
@@ -71,3 +71,11 @@
 (windmove-default-keybindings) ;; Shift+direction
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;;back one
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; foward two
+
+
+(global-hl-line-mode 1)
+ 
+;; To customize the background color
+(set-face-background 'hl-line "gray28")  
+(set-face-foreground 'highlight nil) 
+(set-face-foreground 'hl-line nil)
