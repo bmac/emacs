@@ -27,8 +27,13 @@
 
 (setq ac-modes
       (append ac-modes
-              '(eshell-mode
-                org-mode
+              '(emacs-lisp-mode 
+		lisp-interaction-mode lisp-mode
+		c-mode java-mode php-mode ruby-mode
+		css-mode sh-mode nxml-mode makefile-mode
+		sql-mode cperl-mode
+		eshell-mode org-mode
+		text-mode html-mode django-html-mode
                 )))
 (add-to-list 'ac-trigger-commands 'org-self-insert-command)
 
