@@ -46,7 +46,7 @@
 (load "bmac-ibuffer.el")
 
 ;;programing specific stuff
-;;(load "bmac-python.el")
+(load "bmac-python.el")
 
 (load "bmac-javascript.el")
 
