@@ -25,12 +25,12 @@
                            ))
 
 
-;; (setq ac-modes
-;;       (append ac-modes
-;;               '(eshell-mode
-;;                 org-mode
-;;                 )))
-;; (add-to-list 'ac-trigger-commands 'org-self-insert-command)
+(setq ac-modes
+      (append ac-modes
+              '(eshell-mode
+                org-mode
+                )))
+(add-to-list 'ac-trigger-commands 'org-self-insert-command)
 
 ;; (add-hook 'emacs-lisp-mode-hook
 ;;           (lambda ()
