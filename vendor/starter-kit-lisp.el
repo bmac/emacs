@@ -21,7 +21,7 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'run-coding-hook)
 (add-hook 'emacs-lisp-mode-hook 'esk-remove-elc-on-save)
-(add-hook 'emacs-lisp-mode-hook 'idle-highlight)
+;;(add-hook 'emacs-lisp-mode-hook 'idle-highlight)
 ;(add-hook 'emacs-lisp-mode-hook 'turn-on-paredit)
 
 (defun esk-remove-elc-on-save ()

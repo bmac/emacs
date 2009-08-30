@@ -13,7 +13,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(linum ((t (:inherit (shadow default) :background "color-239" :foreground "goldenrod2")))))
+ '(linum ((t (:inherit (shadow default) :foreground "goldenrod2")))))
 
 ;;django templateing stuffs
 (load "django-html-mode.el")
@@ -46,11 +46,11 @@
 (load "bmac-ibuffer.el")
 
 ;;programing specific stuff
-(load "bmac-python.el")
+;;(load "bmac-python.el")
 
 (load "bmac-javascript.el")
 
-(load "starter-kit-lisp.el")
+;; (load "starter-kit-lisp.el")
 
 (when (>= emacs-major-version 23)
   (load "bmac-emacs23.el"))
@@ -67,9 +67,13 @@
 
 (require 'browse-kill-ring)
 
+(require 'auto-complete-yasnippet)
+
 (load "light-symbol.el")
 
 (load "paren-experiment.el")
+
+(load "bmac-auto-complete.el")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
