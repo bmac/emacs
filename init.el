@@ -60,8 +60,6 @@
 
 (require 'browse-kill-ring)
 
-(require 'auto-complete-yasnippet)
-
 (load "light-symbol.el")
 
 (load "paren-experiment.el")
