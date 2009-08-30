@@ -55,13 +55,6 @@
 (when (>= emacs-major-version 23)
   (load "bmac-emacs23.el"))
 
-(global-hl-line-mode 1)
- 
-;; To customize the background color
-(set-face-background 'hl-line "gray28")  
-(set-face-foreground 'highlight nil) 
-(set-face-foreground 'hl-line nil)
-
 ;;use Ctrl tab to switch buffers cleanly
 (load "crs-bury-buffer.el")
 
