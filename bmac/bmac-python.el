@@ -5,6 +5,7 @@
 
 (add-hook 'python-mode-hook
            (lambda ()
+	     (turn-on-eldoc-mode)
 	     (light-symbol-mode t)))
 
  

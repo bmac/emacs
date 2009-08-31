@@ -50,7 +50,7 @@
 
 (load "bmac-javascript.el")
 
-;; (load "starter-kit-lisp.el")
+(load "starter-kit-lisp.el")
 
 (when (>= emacs-major-version 23)
   (load "bmac-emacs23.el"))
