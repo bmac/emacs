@@ -19,7 +19,6 @@
 ;;over ride ctrl z
 (global-set-key "\C-z" nil)
 
-
 ;;change Backspace to remove both () when point is in the middle
 (global-set-key (kbd "<DEL>") 'backward-delete-char-untabify)
 
@@ -30,10 +29,8 @@
 ;;ido mode
 (ido-mode t)
 
-
 ;; use shift alt arrow keys to move in split screen
 (windmove-default-keybindings 'meta)
-
 
 (setq confirm-kill-emacs
       (lambda (e)
@@ -60,22 +57,26 @@
 	     (cons "." "~/.emacs.d/backups/"))
 (setq tramp-backup-directory-alist backup-directory-alist)
 
-;;lets see how this goes
+;;Settings for backup files
 (setq delete-old-versions t
-  kept-new-versions 6
-  kept-old-versions 2
+  kept-new-versions 100
+  kept-old-versions 100
   version-control t)
-
 
 ;; Window switching.
 (windmove-default-keybindings) ;; Shift+direction
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;;back one
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; foward two
 
-
+;; highlight the current line 
 (global-hl-line-mode 1)
  
 ;; To customize the background color
 (set-face-background 'hl-line "gray28")  
 (set-face-foreground 'highlight nil) 
 (set-face-foreground 'hl-line nil)
+
+;; make completion buffers disappear after 10 seconds.
+(add-hook 'completion-setup-hook
+  (lambda () (run-at-time 10 nil
+    (lambda () (delete-windows-on "*Completions*")))))
