@@ -13,6 +13,15 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
  
+;;; ROPE (for refactoring and auto-completion):
+
+(eval-after-load 'python-mode
+  (progn
+    (pymacs-load "ropemacs" "rope-" 'noerror)
+    ;; enabling autoimport
+    (setq ropemacs-enable-autoimport t)
+    ;; telling ropemacs which modules to cache
+    (setq ropemacs-autoimport-modules '("django"))))
 
 
 ;; Useing auto-complete 2 for python completions 8/30/09
