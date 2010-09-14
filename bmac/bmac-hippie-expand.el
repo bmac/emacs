@@ -1,3 +1,4 @@
+;; Hippie expand ordering 
 (load "complete-with-calc-result.el")
 (setq completion-ignore-case t)
 
