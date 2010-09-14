@@ -3,7 +3,7 @@
 (setq load-path (cons "~/.emacs.d/vendor/" load-path))
 (setq load-path (cons "~/.emacs.d/bmac/" load-path))
 ;; Include subdirectories
-(normal-top-level-add-subdirs-to-load-path)
+;;(normal-top-level-add-subdirs-to-load-path)
 
 ;;Make sure .emacs file is edited in lisp mode
 (setq auto-mode-alist (cons '("\.emacs" . lisp-mode) auto-mode-alist))
@@ -35,7 +35,7 @@
 
 (load "bmac-saveplace.el")
 
-(load "bmac-term.el")
+;(load "bmac-term.el")
 
 (load "bmac-text-mode.el")
 
@@ -46,7 +46,7 @@
 (load "bmac-ibuffer.el")
 
 ;;programing specific stuff
-(load "bmac-python.el")
+;(load "bmac-python.el")
 
 (load "bmac-javascript.el")
 
@@ -56,15 +56,15 @@
   (load "bmac-emacs23.el"))
 
 ;;use Ctrl tab to switch buffers cleanly
-(load "crs-bury-buffer.el")
+;;(load "crs-bury-buffer.el")
 
-(require 'browse-kill-ring)
+;;(require 'browse-kill-ring)
 
-(load "light-symbol.el")
+;;(load "light-symbol.el")
 
 (load "paren-experiment.el")
 
-(load "bmac-auto-complete.el")
+;(load "bmac-auto-complete.el")
 
 (load "bmac-abbrev-table.el")
 
