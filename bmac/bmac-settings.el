@@ -76,7 +76,14 @@
 (set-face-foreground 'highlight nil) 
 (set-face-foreground 'hl-line nil)
 
-;; make completion buffers disappear after 10 seconds.
+;; make completion buffers disappear after 20 seconds.
 (add-hook 'completion-setup-hook
-  (lambda () (run-at-time 10 nil
+  (lambda () (run-at-time 20 nil
     (lambda () (delete-windows-on "*Completions*")))))
+
+
+;; mac stuff remember to wrap this 
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
