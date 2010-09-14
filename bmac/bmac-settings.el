@@ -82,8 +82,10 @@
     (lambda () (delete-windows-on "*Completions*")))))
 
 
-;; mac stuff remember to wrap this 
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
+;; mac stuff 
+(if (eq 'darwin system-type)
+    (progn 
+      (setq mac-option-key-is-meta nil)
+      (setq mac-command-key-is-meta t)
+      (setq mac-command-modifier 'meta)
+      (setq mac-option-modifier nil)))
