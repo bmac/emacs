@@ -3,6 +3,7 @@
 (setq completion-ignore-case t)
 
 (global-set-key [(meta ?/)] 'hippie-expand)
+(global-set-key (kbd "M-RET") 'hippie-expand)
 
 (setq hippie-expand-try-functions-list
       '(yas/hippie-try-expand
