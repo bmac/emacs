@@ -54,39 +54,52 @@
 ;;backup files in .emacs.d/backups
 ;;when useing tramp store backups there as well
 (add-to-list 'backup-directory-alist
-	     (cons "." "~/.emacs.d/backups/"))
+             (cons "." "~/.emacs.d/backups/"))
 (setq tramp-backup-directory-alist backup-directory-alist)
 
 ;;Settings for backup files
 (setq delete-old-versions t
-  kept-new-versions 100
-  kept-old-versions 100
-  version-control t)
+      kept-new-versions 100
+      kept-old-versions 100
+      version-control t)
 
 ;; Window switching.
 (windmove-default-keybindings) ;; Shift+direction
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;;back one
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; foward two
 
-;; highlight the current line 
+;; highlight the current line
 (global-hl-line-mode 1)
- 
+
 ;; To customize the background color
-(set-face-background 'hl-line "gray28")  
-(set-face-foreground 'highlight nil) 
+(set-face-background 'hl-line "gray28")
+(set-face-foreground 'highlight nil)
 (set-face-foreground 'hl-line nil)
 
 ;; make completion buffers disappear after 20 seconds.
 (add-hook 'completion-setup-hook
-  (lambda () (run-at-time 20 nil
-    (lambda () (delete-windows-on "*Completions*")))))
+          (lambda () (run-at-time 20 nil
+                                  (lambda () (delete-windows-on "*Completions*")))))
 
 
-;; mac stuff 
+;; mac stuff
 (if (eq 'darwin system-type)
-    (progn 
+    (progn
       (setq mac-option-key-is-meta nil)
       (setq mac-command-key-is-meta t)
       (setq mac-command-modifier 'meta)
       (setq mac-option-modifier nil)
-      (menu-bar-mode 1)))
+      (menu-bar-mode 1)
+      (setq exec-path
+            '(
+	      "/opt/local/bin"
+	      "/opt/local/sbin"
+	      "/usr/bin"
+	      "/bin"
+	      "/usr/sbin"
+	      "/sbin"
+	      "/usr/local/bin"
+	      "/usr/local/git/bin"
+	      "/usr/X11/bin"
+	      )
+            )))
