@@ -46,7 +46,7 @@
 (load "bmac-ibuffer.el")
 
 ;;programing specific stuff
-;(load "bmac-python.el")
+(load "bmac-python2.el")
 
 (load "bmac-javascript.el")
 
@@ -58,7 +58,7 @@
 ;;use Ctrl tab to switch buffers cleanly
 ;;(load "crs-bury-buffer.el")
 
-;;(require 'browse-kill-ring)
+(require 'browse-kill-ring)
 
 ;;(load "light-symbol.el")
 
