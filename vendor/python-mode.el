@@ -165,7 +165,7 @@ regardless of where in the line point is when the TAB command is used."
   :type 'regexp
   :group 'python)
 
-(defcustom py-default-interpreter "python"
+(defcustom py-default-interpreter "ipython"
   "*Which Python interpreter is used by default.
 The value for this variable can be any installed Python'.
 
