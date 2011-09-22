@@ -22,6 +22,10 @@
 ;;change Backspace to remove both () when point is in the middle
 (global-set-key (kbd "<DEL>") 'backward-delete-char-untabify)
 
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+
 ;;lium.el from http://stud4.tuwien.ac.at/~e0225855/linum/linum.html
 (require 'linum)
 (global-linum-mode t)
