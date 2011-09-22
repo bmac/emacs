@@ -9,10 +9,10 @@
 (setq auto-mode-alist (cons '("\.emacs" . lisp-mode) auto-mode-alist))
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(linum ((t (:inherit (shadow default) :foreground "goldenrod2")))))
 
 ;;django templateing stuffs
@@ -31,7 +31,7 @@
 (load "bmac-functions.el")
 
 ;;use hippie expand instead of debbrev
-(load "bmac-hippie-expand.el")
+;;(load "bmac-hippie-expand.el")
 
 (load "bmac-saveplace.el")
 
@@ -69,9 +69,16 @@
 (load "bmac-abbrev-table.el")
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(erc-modules (quote (autojoin button completion fill irccontrols log match menu netsplit noncommands readonly ring scrolltobottom stamp spelling track))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(erc-modules (quote (autojoin button completion fill irccontrols log match menu netsplit noncommands readonly ring scrolltobottom stamp spelling track)))
+ '(py-cleanup-temporary t)
+ '(py-imenu-show-method-args-p t)
+ '(py-jython-command-args (quote ("-i" "--no-color-info")))
+ '(py-temp-directory "/tmp/emacspython/")
+ '(python-mode-hook (quote (turn-on-eldoc-mode py-end-of-defun-function py-beg-of-defun-function)))
+ '(python-python-command "ipython")
+ '(python-remove-cwd-from-path nil))
 

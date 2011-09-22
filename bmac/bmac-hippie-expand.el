@@ -6,8 +6,7 @@
 (global-set-key (kbd "M-RET") 'hippie-expand)
 
 (setq hippie-expand-try-functions-list
-      '(yas/hippie-try-expand
-	try-expand-dabbrev
+      '(try-expand-dabbrev
 	try-expand-dabbrev-visible
 	try-expand-dabbrev-all-buffers
 	try-expand-dabbrev-from-kill
