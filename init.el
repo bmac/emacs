@@ -64,7 +64,7 @@
 
 (load "paren-experiment.el")
 
-;(load "bmac-auto-complete.el")
+(load "bmac-auto-complete.el")
 
 (load "bmac-abbrev-table.el")
 
