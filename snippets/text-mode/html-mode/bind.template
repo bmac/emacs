@@ -1,0 +1,1 @@
+data-bind='template: { name: ${1:"useQuotesForIDnames"}${2:, foreach: ${3:observableArray} }${4:, data:${5:templateData} }${6:, afterRender:${7:myPostPorcessingLogic} }}'

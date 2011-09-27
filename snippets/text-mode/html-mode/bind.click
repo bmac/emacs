@@ -1,0 +1,1 @@
+data-bind="click: $0"

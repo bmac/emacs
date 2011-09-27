@@ -1,0 +1,4 @@
+ko.dependentObservable(function(){
+  return(
+    $1
+  );
