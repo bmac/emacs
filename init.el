@@ -46,7 +46,7 @@
 (load "bmac-ibuffer.el")
 
 ;;programing specific stuff
-(load "bmac-python2.el")
+;;(load "bmac-python2.el")
 
 (load "bmac-javascript.el")
 
@@ -62,6 +62,9 @@
 
 ;;(load "light-symbol.el")
 
+(require 'anything)
+(global-set-key (kbd "M-n") 'anything) 
+
 (load "paren-experiment.el")
 
 (load "bmac-auto-complete.el")
@@ -74,11 +77,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(erc-modules (quote (autojoin button completion fill irccontrols log match menu netsplit noncommands readonly ring scrolltobottom stamp spelling track)))
+ '(ns-pop-up-frames nil)
  '(py-cleanup-temporary t)
  '(py-imenu-show-method-args-p t)
  '(py-jython-command-args (quote ("-i" "--no-color-info")))
  '(py-temp-directory "/tmp/emacspython/")
- '(python-mode-hook (quote (turn-on-eldoc-mode py-end-of-defun-function py-beg-of-defun-function)))
+ '(python-mode-hook (quote (turn-on-eldoc-mode py-end-of-defun-function py-beg-of-defun-function)) t)
  '(python-python-command "ipython")
  '(python-remove-cwd-from-path nil))
 
