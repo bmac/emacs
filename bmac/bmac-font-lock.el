@@ -9,3 +9,5 @@
 (color-theme-initialize)
 (load "color-theme-bmac.el")
 (color-theme-bmac)
+
+(require 'color-theme-solarized)

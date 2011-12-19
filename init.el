@@ -1,9 +1,10 @@
 ;; Set the load path
 (setq load-path (cons "~/.emacs.d/" load-path))
 (setq load-path (cons "~/.emacs.d/vendor/" load-path))
+(setq load-path (cons "~/.emacs.d/vendor/emacs-color-theme-solarized/" load-path))
 (setq load-path (cons "~/.emacs.d/bmac/" load-path))
 ;; Include subdirectories
-;;(normal-top-level-add-subdirs-to-load-path)
+;(normal-top-level-add-subdirs-to-load-path)
 
 ;;Make sure .emacs file is edited in lisp mode
 (setq auto-mode-alist (cons '("\.emacs" . lisp-mode) auto-mode-alist))
@@ -77,6 +78,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(erc-modules (quote (autojoin button completion fill irccontrols log match menu netsplit noncommands readonly ring scrolltobottom stamp spelling track)))
+ '(minimap-width-fraction 0.4)
  '(ns-pop-up-frames nil)
  '(py-cleanup-temporary t)
  '(py-imenu-show-method-args-p t)
