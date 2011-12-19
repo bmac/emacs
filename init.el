@@ -31,7 +31,7 @@
 (load "bmac-functions.el")
 
 ;;use hippie expand instead of debbrev
-;;(load "bmac-hippie-expand.el")
+(load "bmac-hippie-expand.el")
 
 (load "bmac-saveplace.el")
 
