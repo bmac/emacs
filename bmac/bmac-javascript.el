@@ -9,3 +9,10 @@
       js2-cleanup-whitespace t
       js2-enter-indents-newline t
       js2-indent-on-enter-key nil)
+
+;; https://github.com/bard/mozrepl/wiki
+(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
+
+;;(require 'js-comint)
+;; requires node js
+;;(setq inferior-js-program-command "node")
