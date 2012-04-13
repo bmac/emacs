@@ -133,3 +133,8 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   (yank)
 )
 (global-set-key (kbd "C-d") 'duplicate-line)
+
+(defun set-transparency (n)
+  "Sets the transparency of the current buffer. 100 for solid 0 for near see though."
+  (interactive "nAlpha (100 for a solid background):")
+  (modify-frame-parameters nil (list (cons 'alpha n))))

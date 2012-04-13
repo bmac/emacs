@@ -1,5 +1,0 @@
-#name : for(...; ...; ...) { ... }
-# --
-for(var ${1:i} = ${2:0}, len = ${3:collection}.length; $1 < len; $1++){
-$0
-}

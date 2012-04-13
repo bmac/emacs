@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : Constructor
+# --
+init: function($1) {
+  $0
+}

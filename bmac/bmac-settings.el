@@ -46,6 +46,10 @@
 ;;fundamental is kinda useless imo
 (setq default-major-mode 'text-mode)
 
+;; spelling helpers for text mode
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+(add-hook 'text-mode-hook 'abbrev-mode)
+
 ;; Transparently open compressed files
 (auto-compression-mode t)
 
@@ -75,10 +79,32 @@
 ;; highlight the current line
 (global-hl-line-mode 1)
 
-;; To customize the background color
-(set-face-background 'hl-line "gray28")
-(set-face-foreground 'highlight nil)
-(set-face-foreground 'hl-line nil)
+;; Use system trash (for emacs 23)
+(setq delete-by-moving-to-trash t)
+
+(setq read-buffer-completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
+
+;; uniquify!
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "|")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
+
+;; color theme solarized dark
+(load-theme 'solarized-dark t)
+
+(require 'yasnippet)
+(yas/global-mode 1)
+
+(require 'projectile)
+
+;; http://cx4a.org/software/auto-complete/index.html#Latest_Stable
+;; http://cx4a.org/software/auto-complete/manual.html
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/ac-dict")
+(ac-config-default)
 
 ;; make completion buffers disappear after 20 seconds.
 (add-hook 'completion-setup-hook
@@ -89,10 +115,6 @@
 ;; mac stuff
 (if (eq 'darwin system-type)
     (progn
-      (setq mac-option-key-is-meta nil)
-      (setq mac-command-key-is-meta t)
-      (setq mac-command-modifier 'meta)
-      (setq mac-option-modifier nil)
       (menu-bar-mode 1)
       (setq exec-path
             '(

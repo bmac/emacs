@@ -62,7 +62,7 @@
               (mapc (lambda (child)
                       (push child stack))
                     cdr)
-            A(when (and (stringp car)
+            (when (and (stringp car)
                        (string-match (concat "^" (regexp-quote ac-prefix)) car))
               ;; Remove extra characters
               (if (string-match "^.*\\(()\\|=\\|<>\\)$" car)
@@ -71,10 +71,10 @@
               (incf i))))
         finally return (nreverse result)))
 
-;;(ac-define-source imenu
-;;  '((depends imenu)
-;;    (candidates . ac-imenu-candidates)
-;;    (symbol . "s")))
+(ac-define-source imenu
+  '((depends imenu)
+    (candidates . ac-imenu-candidates)
+    (symbol . "s")))
 
 ;; gtags
 
