@@ -98,19 +98,13 @@
 (require 'yasnippet)
 (yas/global-mode 1)
 
-(require 'projectile)
+(autoload 'find-file-in-project "find-file-in-project" "Find file in project." t)
 
 ;; http://cx4a.org/software/auto-complete/index.html#Latest_Stable
 ;; http://cx4a.org/software/auto-complete/manual.html
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/ac-dict")
 (ac-config-default)
-
-;; make completion buffers disappear after 20 seconds.
-(add-hook 'completion-setup-hook
-          (lambda () (run-at-time 20 nil
-                                  (lambda () (delete-windows-on "*Completions*")))))
-
 
 ;; mac stuff
 (if (eq 'darwin system-type)
