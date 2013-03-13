@@ -9,7 +9,7 @@
       js2-cleanup-whitespace t
       js2-enter-indents-newline t
       js2-indent-on-enter-key nil
-      js2-global-externs '("$" "Backbone" "_" "ko" "souschef")
+      js2-global-externs '("$" "Backbone" "_" "ko")
       js2-idle-timer-delay 1.5)
 
 ;; Use lambda for anonymous functions
