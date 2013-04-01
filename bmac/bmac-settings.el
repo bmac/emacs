@@ -97,7 +97,8 @@
 
 (require 'yasnippet)
 (yas/global-mode 1)
-
+(setq yas/prompt-functions '(yas/ido-prompt
+                             yas/completing-prompt))
 ;; (autoload 'find-file-in-project "find-file-in-project" "Find file in project." t)
 
 ;; http://cx4a.org/software/auto-complete/index.html#Latest_Stable
