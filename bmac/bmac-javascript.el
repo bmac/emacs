@@ -1,3 +1,5 @@
+(require 'coffee-mode)
+
 ;;http://steve-yegge.blogspot.com/2008/03/js2-mode-new-javascript-mode-for-emacs.html
 ;; Now using fork from https://github.com/mooz/js2-mode
 ;; emacs --batch -f batch-byte-compile js2-mode.el
