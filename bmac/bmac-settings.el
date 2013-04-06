@@ -22,6 +22,10 @@
 ;;change Backspace to remove both () when point is in the middle
 (global-set-key (kbd "<DEL>") 'backward-delete-char-untabify)
 
+;; use 4 spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
