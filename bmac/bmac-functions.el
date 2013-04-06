@@ -138,3 +138,15 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   "Sets the transparency of the current buffer. 100 for solid 0 for near see though."
   (interactive "nAlpha (100 for a solid background):")
   (modify-frame-parameters nil (list (cons 'alpha n))))
+
+(defun smart-beginning-of-line ()
+  "Move point to first non-whitespace character or beginning-of-line.
+
+Move point to the first non-whitespace character on this line.
+If point was already at that position, move point to beginning of line."
+  (interactive)
+  (let ((oldpos (point)))
+    (back-to-indentation)
+    (and (= oldpos (point))
+         (beginning-of-line))))
+(global-set-key "\C-a" 'smart-beginning-of-line)
