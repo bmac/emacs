@@ -100,7 +100,10 @@
 (setq uniquify-ignore-buffers-re "^\\*")
 
 ;; color theme solarized dark
+(require 'solarized)
 (load-theme 'solarized-dark t)
+
+
 
 (require 'yasnippet)
 (yas/global-mode 1)

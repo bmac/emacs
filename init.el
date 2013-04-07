@@ -4,8 +4,13 @@
   ;; Set the load path
   (setq load-path (cons "~/.emacs.d/" load-path))
   (setq load-path (cons "~/.emacs.d/vendor/" load-path))
-  (setq custom-theme-load-path (cons "~/.emacs.d/vendor/emacs-color-theme-solarized" custom-theme-load-path))
   (setq load-path (cons "~/.emacs.d/bmac/" load-path))
+  
+  ;; use a package manager
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (package-initialize)
 
   ;;Make sure .emacs file is edited in lisp mode
   (setq auto-mode-alist (cons '("\.emacs" . lisp-mode) auto-mode-alist))
