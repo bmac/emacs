@@ -30,6 +30,9 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
+;; reopen all files when the change on disk
+(global-auto-revert-mode t)
+
 ;;lium.el from http://stud4.tuwien.ac.at/~e0225855/linum/linum.html
 (require 'linum)
 (global-linum-mode t)
