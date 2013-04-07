@@ -117,21 +117,5 @@
 (setq-default left-fringe-width  10)
 (global-git-gutter-mode t)
 
-
-;; mac stuff
-(if (eq 'darwin system-type)
-    (progn
-      (menu-bar-mode 1)
-      (setq exec-path
-            '(
-	      "/opt/local/bin"
-	      "/opt/local/sbin"
-	      "/usr/bin"
-	      "/bin"
-	      "/usr/sbin"
-	      "/sbin"
-	      "/usr/local/bin"
-	      "/usr/local/git/bin"
-	      "/usr/X11/bin"
-	      )
-            )))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
