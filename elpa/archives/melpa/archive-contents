@@ -168,7 +168,7 @@
 	[(20120108 1245)
 	 nil "show vertical line (column highlighting) mode. [source: wiki]" single])
  (vlfi .
-       [(20130407 1853)
+       [(20130408 108)
 	nil "View Large Files Improved [source: github]" single])
  (visual-regexp-steroids .
 			 [(20130407 2147)
@@ -1746,10 +1746,15 @@
 		 nil "Major mode API client for status.net open microblogging [source: github]" tar])
  (icomplete+ .
 	     [(20130201 556)
-	      nil "No description available. [source: wiki]" single])
+	      nil "Extensions to `icomplete.el'. [source: wiki]" single])
+ (icicles .
+	  [(20130407 757)
+	   nil "Minibuffer input completion and cycling. [source: wiki]" tar])
  (ibuffer-vc .
-	     [(20130331 2049)
-	      nil "Group ibuffer's list by VC project, or show VC status [source: github]" single])
+	     [(20130407 2042)
+	      ((cl-lib
+		(0 2)))
+	      "Group ibuffer's list by VC project, or show VC status [source: github]" single])
  (hungry-delete .
 		[(20120128 1856)
 		 nil "hungry delete minor mode [source: github]" single])
@@ -2792,7 +2797,7 @@
 	       [(20090510 2255)
 		nil "Mode for editing crontab files [source: github]" single])
  (creole .
-	 [(20130407 1046)
+	 [(20130407 2147)
 	  ((el-x
 	    (0 2 1)))
 	  "A parser for the Creole Wiki language [source: github]" single])
@@ -3096,10 +3101,10 @@
 	      [(20080905 553)
 	       nil "major mode for editing Apache configuration files [source: wiki]" single])
  (anything .
-	   [(20130323 755)
-	    nil "open anything / QuickSilver-like candidate-selection framework [source: wiki]" single])
+	   [(20130323 1652)
+	    nil "open anything / QuickSilver-like candidate-selection framework [source: git]" tar])
  (anti-zenburn-theme .
-		     [(20130405 54)
+		     [(20130407 2314)
 		      nil "Low-contrast Zenburn-inverted theme [source: github]" single])
  (ansi .
        [(20121008 1920)
