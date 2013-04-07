@@ -111,13 +111,12 @@
 (yas/global-mode 1)
 (setq yas/prompt-functions '(yas/ido-prompt
                              yas/completing-prompt))
-;; (autoload 'find-file-in-project "find-file-in-project" "Find file in project." t)
 
-;; http://cx4a.org/software/auto-complete/index.html#Latest_Stable
-;; http://cx4a.org/software/auto-complete/manual.html
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/ac-dict")
-(ac-config-default)
+
+(require 'git-gutter-fringe)
+(setq-default left-fringe-width  10)
+(global-git-gutter-mode t)
+
 
 ;; mac stuff
 (if (eq 'darwin system-type)
