@@ -25,6 +25,7 @@
 ;; use 4 spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
+(setq sgml-basic-offset 4)
 
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
