@@ -95,6 +95,9 @@
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 
+;; allow use of narrow to region without a warning
+(put 'narrow-to-region 'disabled nil)
+
 ;; uniquify!
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
