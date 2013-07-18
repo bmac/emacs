@@ -6,5 +6,5 @@ tramp
 .DS_Store
 ac-comphist.dat
 eshell/
-elpa/*.txt
+elpa/
 *~

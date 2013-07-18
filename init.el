@@ -7,10 +7,9 @@
   (setq load-path (cons "~/.emacs.d/bmac/" load-path))
   
   ;; use a package manager
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (package-initialize)
+  (setq prelude-packages '(cl-lib auto-complete browse-kill-ring coffee-mode exec-path-from-shell find-file-in-repository git-gutter-fringe less-css-mode magit js2-mode solarized-theme yasnippet))
+  (require 'prelude-packages)
+  
 
   ;;Make sure .emacs file is edited in lisp mode
   (setq auto-mode-alist (cons '("\.emacs" . lisp-mode) auto-mode-alist))
@@ -43,3 +42,4 @@
  ;; If there is more than one, they won't work right.
  '(fringe-mode 0 nil (fringe))
  '(ns-pop-up-frames nil))
+)
