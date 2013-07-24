@@ -43,6 +43,9 @@
 ;;ido mode
 (ido-mode t)
 
+(require 'jedi)
+(add-hook 'python-mode-hook 'jedi:setup)
+
 ;; use shift alt arrow keys to move in split screen
 (windmove-default-keybindings 'meta)
 
