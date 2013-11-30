@@ -42,6 +42,7 @@
 
 ;;ido mode
 (ido-mode t)
+(setq ido-enable-flex-matching t)
 
 (require 'jedi)
 (add-hook 'python-mode-hook 'jedi:setup)
