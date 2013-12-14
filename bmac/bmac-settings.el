@@ -127,3 +127,7 @@
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+
+;; html mode for handlebars files
+(add-to-list 'auto-mode-alist '("\\.hbs$" . html-mode))
