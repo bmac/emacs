@@ -14,9 +14,16 @@
       js2-global-externs '("$" "Backbone" "_" "ko" "angular" "require" "exports")
       js2-idle-timer-delay 1)
 
+(defun grunt ()
+  (interactive)
+  (compile "grunt" t))
+
 ;; Use lambda for anonymous functions
 (add-hook 'js2-mode-hook
           (lambda ()
+            (define-key js2-mode-map "\C-cg" 'grunt)
+            (define-key js2-mode-map "\C-c\C-c" 'grunt)
+            (define-key js2-mode-map "\C-cc" 'grunt)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
