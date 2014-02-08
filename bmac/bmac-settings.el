@@ -114,13 +114,6 @@
 (load-theme 'solarized-dark t)
 
 
-
-(require 'yasnippet)
-(yas/global-mode 1)
-(setq yas/prompt-functions '(yas/ido-prompt
-                             yas/completing-prompt))
-
-
 (require 'git-gutter-fringe)
 (setq-default left-fringe-width  10)
 (global-git-gutter-mode t)
