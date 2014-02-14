@@ -118,5 +118,15 @@
 (setq-default left-fringe-width  10)
 (global-git-gutter-mode t)
 
+;; Jump to next/previous hunk
+(global-set-key (kbd "C-x p") 'git-gutter:previous-hunk)
+(global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
+
+;; Stage current hunk
+;; (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
+
+;; Revert current hunk
+(global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
