@@ -128,5 +128,9 @@
 ;; Revert current hunk
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
+
+(setq github-browse-file-show-line-at-point t)
+(global-set-key (kbd "C-x g h") 'github-browse-file)
+
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
