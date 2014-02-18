@@ -119,8 +119,8 @@
 (global-git-gutter-mode t)
 
 ;; Jump to next/previous hunk
-(global-set-key (kbd "C-x p") 'git-gutter:previous-hunk)
-(global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
+(global-set-key (kbd "C-x v p") 'git-gutter:previous-hunk)
+(global-set-key (kbd "C-x v n") 'git-gutter:next-hunk)
 
 ;; Stage current hunk
 ;; (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
