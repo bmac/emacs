@@ -61,7 +61,7 @@
 (setq default-major-mode 'text-mode)
 
 ;; spelling helpers for text mode
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+;; (add-hook 'text-mode-hook 'turn-on-flyspell)
 (add-hook 'text-mode-hook 'abbrev-mode)
 
 ;; Transparently open compressed files
