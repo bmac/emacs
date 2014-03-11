@@ -55,6 +55,7 @@
         (y-or-n-p-with-timeout
          "Really exit Emacs (automatically exits in 3 secs)? " 3 t)))
 (setq x-select-enable-clipboard t)
+(setq require-final-newline t)
 
 ;;set text-mode as the default major mode
 ;;fundamental is kinda useless imo
