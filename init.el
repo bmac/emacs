@@ -50,7 +50,7 @@
  '(ido-enable-flex-matching t)
  '(js2-basic-offset 2)
  '(ns-pop-up-frames nil)
- '(sgml-basic-offset 2 t))
+ '(sgml-basic-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
