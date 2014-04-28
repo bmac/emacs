@@ -7,7 +7,7 @@
   (setq load-path (cons "~/.emacs.d/bmac/" load-path))
   
   ;; use a package manager
-  (setq prelude-packages '(cl-lib browse-kill-ring exec-path-from-shell find-file-in-repository git-gutter-fringe magit js2-mode solarized-theme jedi markdown-mode prodigy stylus-mode handlebars-mode))
+  (setq prelude-packages '(cl-lib browse-kill-ring exec-path-from-shell find-file-in-repository git-gutter-fringe magit js2-mode solarized-theme jedi markdown-mode prodigy stylus-mode handlebars-mode rust-mode))
   (require 'prelude-packages)
   
 
