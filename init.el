@@ -7,7 +7,7 @@
   (setq load-path (cons "~/.emacs.d/bmac/" load-path))
   
   ;; use a package manager
-  (setq prelude-packages '(cl-lib browse-kill-ring exec-path-from-shell find-file-in-repository git-gutter-fringe magit js2-mode solarized-theme jedi markdown-mode prodigy stylus-mode handlebars-mode rust-mode))
+  (setq prelude-packages '(cl-lib browse-kill-ring exec-path-from-shell find-file-in-repository git-gutter-fringe magit js2-mode solarized-theme jedi markdown-mode prodigy stylus-mode rust-mode))
   (require 'prelude-packages)
   
 
@@ -46,6 +46,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(css-indent-offset 2)
  '(fringe-mode 0 nil (fringe))
  '(ido-enable-flex-matching t)
  '(js2-basic-offset 2)
@@ -57,3 +58,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'downcase-region 'disabled nil)
