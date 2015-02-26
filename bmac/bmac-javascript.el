@@ -10,7 +10,7 @@
       js2-enter-indents-newline t
       js2-indent-on-enter-key nil
       js2-basic-offset 2
-      js2-global-externs '("$" "Backbone" "_" "ko" "angular" "Ember" "require" "module" "exports" "define")
+      js2-global-externs '("$" "Backbone" "_" "ko" "angular" "Ember" "require" "module" "exports" "define" "Promise")
       js2-idle-timer-delay 1)
 
 (defun grunt ()
