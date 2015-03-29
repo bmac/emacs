@@ -18,7 +18,7 @@
   ;;bmac.el stuff is custom setting of
   ;;various libs
 
-  ;; one off settings and key assignments
+  ;;one off settings and key assignments
   (load "bmac-settings.el")
 
   ;;functions I find useful
