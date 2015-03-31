@@ -131,7 +131,7 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   (open-line 1)
   (next-line 1)
   (yank)
-)
+  )
 (global-set-key (kbd "C-d") 'duplicate-line)
 
 (defun set-transparency (n)
@@ -152,11 +152,11 @@ If point was already at that position, move point to beginning of line."
 (global-set-key "\C-a" 'smart-beginning-of-line)
 
 (defun kill-other-buffers ()
-    "Kill all other buffers."
-    (interactive)
-    (mapc 'kill-buffer 
-          (delq (current-buffer) 
-                (remove-if-not 'buffer-file-name (buffer-list)))))
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer
+        (delq (current-buffer)
+              (remove-if-not 'buffer-file-name (buffer-list)))))
 
 
 (defun rotate-windows ()
@@ -183,3 +183,19 @@ If point was already at that position, move point to beginning of line."
              (set-window-start w1 s2)
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
+
+(defun neotree-project-dir ()
+  "Open NeoTree using the git root."
+  (interactive)
+  (let ((project-dir (ffir-locate-dominating-file
+                      default-directory
+                      (lambda (directory)
+                        (ffir-directory-contains-which-file
+                         ffir-repository-types directory))))
+        (file-name (buffer-file-name)))
+    (if project-dir
+        (progn
+          (neotree-dir project-dir)
+          (neotree-find file-name))
+      (message "Could not find git project root."))))
+(global-set-key "\C-c\C-p" 'neotree-project-dir)
