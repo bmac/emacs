@@ -60,6 +60,17 @@
     )
   )
 
+(defun toggle-test-file-other ()
+  (interactive)
+  (let ((filename buffer-file-name)
+        (buffer-is-test-file (string/ends-with (buffer-file-name) "test.js")))
+    (if buffer-is-test-file
+        (find-file-other-window (get-app-file filename))
+      (find-file-other-window (get-test-file filename))
+      )
+    )
+  )
+
 (defun string/ends-with (string suffix)
       "Return t if STRING ends with SUFFIX."
       (and (string-match (rx-to-string `(: ,suffix eos) t)
@@ -74,6 +85,7 @@
             (define-key js2-mode-map "\C-c\C-c" 'test-js)
             (define-key js2-mode-map "\C-cc" 'test-js)
             (define-key js2-mode-map "\C-ct" 'toggle-test-file)
+            (define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
             (define-key js2-mode-map "RET" 'newline-and-indent)
             (pabbrev-mode)
             (font-lock-add-keywords
