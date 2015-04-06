@@ -109,8 +109,17 @@
 (setq uniquify-after-kill-buffer-p t)
 (setq uniquify-ignore-buffers-re "^\\*")
 
-(require 'git-gutter-fringe)
-(setq-default left-fringe-width  10)
+
+(if (display-graphic-p)
+    (progn
+      ;; if graphic
+      (require 'git-gutter-fringe)
+      (setq-default left-fringe-width  10))
+  ;; else terminal
+  (progn
+    (require 'git-gutter)
+    (git-gutter:linum-setup)
+    ))
 (global-git-gutter-mode t)
 
 ;; Jump to next/previous hunk
