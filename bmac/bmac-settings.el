@@ -34,6 +34,8 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 
 (global-set-key (kbd "s-t") 'find-file-in-repository)
+(global-set-key (kbd "C-x f") 'find-file-in-repository)
+
 
 ;; reopen all files when the change on disk
 (global-auto-revert-mode t)
