@@ -17,13 +17,65 @@
 (defun test-js ()
   (interactive)
   (save-buffer)
-  (compile "npm test" t))
+  (recompile t))
+
+;; jump to test file
+(defun test-js ()
+  (interactive)
+  (save-buffer)
+  (recompile t))
+
+(defun trim-test-js (filename)
+  (replace-regexp-in-string "\\(-test.js$\\)" ".js" filename)
+)
+
+(defun replace-test-with-app (filename)
+  (replace-regexp-in-string "\\(tests/unit\\)" "app" filename)
+)
+
+(defun replace-app-with-test (filename)
+  (replace-regexp-in-string "\\(/app/\\)" "/tests/unit/" filename)
+)
+
+(defun add-test-js (filename)
+  (replace-regexp-in-string "\\(.js$\\)" "-test.js" filename)
+)
+
+(defun get-app-file (filename)
+  (trim-test-js (replace-test-with-app filename))
+)
+
+(defun get-test-file (filename)
+  (add-test-js (replace-app-with-test filename))
+)
+
+(defun toggle-test-file ()
+  (interactive)
+  (let ((filename buffer-file-name)
+        (buffer-is-test-file (string/ends-with (buffer-file-name) "test.js")))
+    (if buffer-is-test-file
+        (find-file (get-app-file filename))
+      (find-file (get-test-file filename))
+      )
+    )
+  )
+
+(defun string/ends-with (string suffix)
+      "Return t if STRING ends with SUFFIX."
+      (and (string-match (rx-to-string `(: ,suffix eos) t)
+                         string)
+           t))
+
+;; run test for file
 
 ;; Use lambda for anonymous functions
 (add-hook 'js2-mode-hook
           (lambda ()
             (define-key js2-mode-map "\C-c\C-c" 'test-js)
             (define-key js2-mode-map "\C-cc" 'test-js)
+            (define-key js2-mode-map "\C-ct" 'toggle-test-file)
+            (define-key js2-mode-map "RET" 'newline-and-indent)
+            (pabbrev-mode)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
