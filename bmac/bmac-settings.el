@@ -1,6 +1,8 @@
 ;; use UTF-8
 (prefer-coding-system 'utf-8)
 
+;; (setq create-lockfiles nil)
+
 ;; Don't make me type out 'yes' and 'no'
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -17,7 +19,7 @@
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 
 ;;over ride ctrl z
-(global-set-key "\C-z" nil)
+;; (global-set-key "\C-z" nil)
 
 ;;change Backspace to remove both () when point is in the middle
 (global-set-key (kbd "<DEL>") 'backward-delete-char-untabify)
@@ -43,9 +45,6 @@
 ;;ido mode
 (ido-mode t)
 (setq ido-enable-flex-matching t)
-
-(require 'jedi)
-(add-hook 'python-mode-hook 'jedi:setup)
 
 ;; use shift alt arrow keys to move in split screen
 (windmove-default-keybindings 'meta)
@@ -109,11 +108,6 @@
 (setq uniquify-separator "|")
 (setq uniquify-after-kill-buffer-p t)
 (setq uniquify-ignore-buffers-re "^\\*")
-
-;; color theme solarized dark
-(require 'solarized)
-(load-theme 'solarized-dark t)
-
 
 (require 'git-gutter-fringe)
 (setq-default left-fringe-width  10)
