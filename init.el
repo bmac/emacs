@@ -4,7 +4,7 @@
 (setq load-path (cons "~/.emacs.d/bmac/" load-path))
 
 ;; use a package manager
-(setq prelude-packages '(cl-lib browse-kill-ring find-file-in-repository git-gutter-fringe js2-mode markdown-mode stylus-mode rust-mode neotree))
+(setq prelude-packages '(cl-lib browse-kill-ring find-file-in-repository git-gutter git-gutter-fringe js2-mode markdown-mode stylus-mode rust-mode neotree flx-ido color-theme-solarized))
 (require 'prelude-packages)
 
 ;;Make sure .emacs file is edited in lisp mode
