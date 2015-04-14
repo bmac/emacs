@@ -86,7 +86,7 @@
             (define-key js2-mode-map "\C-cc" 'test-js)
             (define-key js2-mode-map "\C-ct" 'toggle-test-file)
             (define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
-            (define-key js2-mode-map "RET" 'newline-and-indent)
+            (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (pabbrev-mode)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
