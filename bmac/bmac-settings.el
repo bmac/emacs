@@ -138,8 +138,8 @@
 (setq github-browse-file-show-line-at-point t)
 (global-set-key (kbd "C-x g h") 'github-browse-file)
 
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+;; (when (memq window-system '(mac ns))
+;;  (exec-path-from-shell-initialize))
 
 
 (require 'flx-ido)
