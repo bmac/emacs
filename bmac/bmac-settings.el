@@ -44,10 +44,6 @@
 (require 'linum)
 (global-linum-mode t)
 
-;;ido mode
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-
 ;; use shift alt arrow keys to move in split screen
 (windmove-default-keybindings 'meta)
 
