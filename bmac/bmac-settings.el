@@ -145,3 +145,6 @@
 ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
+
+
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
