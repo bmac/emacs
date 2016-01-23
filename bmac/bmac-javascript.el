@@ -88,6 +88,7 @@
             (define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (pabbrev-mode)
+            (electric-pair-mode)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
