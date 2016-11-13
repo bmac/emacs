@@ -17,6 +17,9 @@
 ;;one off settings and key assignments
 (load "bmac-settings.el")
 
+;; Eshell config
+(load "bmac-eshell.el")
+
 ;; modified solarized theme to work in osx terminal app
 (load "bmac-theme.el")
 
