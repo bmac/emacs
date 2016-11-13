@@ -85,11 +85,12 @@
 ;; Use lambda for anonymous functions
 (add-hook 'js2-mode-hook
           (lambda ()
-            (define-key js2-mode-map "\C-c\C-c" 'test-js)
-            (define-key js2-mode-map "\C-cc" 'test-js)
-            (define-key js2-mode-map "\C-ct" 'toggle-test-file)
-            (define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
+            ;;(define-key js2-mode-map "\C-c\C-c" 'test-js)
+            ;;(define-key js2-mode-map "\C-cc" 'test-js)
+            (define-key js2-mode-map "\C-ct" 'mocha-test-file)
+            ;;(define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
+            (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
             (pabbrev-mode)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
