@@ -188,3 +188,8 @@ If point was already at that position, move point to beginning of line."
           (neotree-find file-name))
       (message "Could not find git project root."))))
 (global-set-key "\C-c\C-p" 'neotree-project-dir)
+
+
+(defun next-10-lines ()
+  (next-line 10)
+)
