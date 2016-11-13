@@ -70,17 +70,6 @@
   (untabify (point-min) (point-max)))
 
 
-(defun tj-find-file-check-make-large-file-read-only-hook ()
-  "If a file is over a given size, make the buffer read only."
-  (when (> (buffer-size) (* 1024 1024))
-    (setq buffer-read-only t)
-    (buffer-disable-undo)
-    (message "Buffer is set to read-only because it is large. Undo also disabled.")))
-
-
-(add-hook 'find-file-hooks 'tj-find-file-check-make-large-file-read-only-hook)
-
-
                                         ;Copy-only from M-x all things emacs.
 (defun copy-line (&optional arg)
   "Do a kill-line but copy rather than kill. This function directly calls
