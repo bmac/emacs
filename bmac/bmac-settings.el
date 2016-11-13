@@ -29,6 +29,10 @@
 (setq tab-width 4)
 (setq sgml-basic-offset 4)
 
+;; Don't jump half a page when scrolling
+(setq scroll-conservatively 10000
+      scroll-preserve-screen-position t)
+
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
