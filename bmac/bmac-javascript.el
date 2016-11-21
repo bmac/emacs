@@ -5,7 +5,7 @@
 ;; emacs --batch -f batch-byte-compile js2-mode.el
 ;;(setq js2-use-font-lock-faces t)
 (autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))s
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 (setq js2-consistent-level-indent-inner-bracket-p t
       js2-pretty-multiline-decl-indentation-p t
