@@ -8,4 +8,4 @@ Installation instructions:
 $ git clone git@github.com:bmac/emacs.git ~/.emacs.d
 ```
 
-Dependenecies should be fetched when emacs is opened.
+Dependenecies should be fetched automatically when emacs is opened for the first time.
