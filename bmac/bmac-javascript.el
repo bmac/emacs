@@ -1,3 +1,4 @@
+(require 'mocha)
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
 ;;http://steve-yegge.blogspot.com/2008/03/js2-mode-new-javascript-mode-for-emacs.html
@@ -80,21 +81,52 @@
                          string)
            t))
 
-;; run test for file
+;; (defun mocha-test-file ()
+;;   "Test the current file."
+;;   (interactive)
+;;   (setq last-buffer-name (buffer-file-name))
+;;   (mocha-run (buffer-file-name)))
+
+
+;; (defun mocha-redo-last-command ()
+;;   "Test the current file."
+;;   (interactive)
+;;   (mocha-run last-buffer-name))
+
+(setq last-buffer-name nil)
+(defun save-and-test-file ()
+  "Test the current file."
+  (interactive)
+  (setq last-buffer-name (buffer-file-name))
+  (mocha-run (buffer-file-name)))
+
+
+(defun test-last-file ()
+  "Test the current file."
+  (interactive)
+  (mocha-run last-buffer-name))
+
+
+(defun smart-test-file ()
+  (interactive)
+  (let ((buffer-is-test-file (string/ends-with (buffer-file-name) "test.js")))
+    (if buffer-is-test-file
+        (save-and-test-file)
+      (test-last-file)
+      )
+    )
+  )
 
 ;; Use lambda for anonymous functions
 (add-hook 'js2-mode-hook
           (lambda ()
             ;;(define-key js2-mode-map "\C-c\C-c" 'test-js)
             ;;(define-key js2-mode-map "\C-cc" 'test-js)
-            (define-key js2-mode-map "\C-ct" 'mocha-test-file)
+            (define-key js2-mode-map "\C-ct" 'smart-test-file)
             ;;(define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
             (define-key js2-mode-map "\C-d/" 'duplicate-line)
-            (define-key rjsx-mode-map "<" 'insert-char)
-            (define-key rjsx-mode-map (kbd "C-d") 'duplicate-line)
-
             (pabbrev-mode)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
