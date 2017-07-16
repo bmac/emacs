@@ -1,4 +1,5 @@
 (require 'mocha)
+(require 'shell-pop)
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
 ;;http://steve-yegge.blogspot.com/2008/03/js2-mode-new-javascript-mode-for-emacs.html
@@ -93,26 +94,39 @@
 ;;   (interactive)
 ;;   (mocha-run last-buffer-name))
 
+;; Do not pompt before killing process buffers
+(setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
+
+(defun mocha-run-or-reveal (buffer-file-name reveal)
+  (if (and reveal (get-buffer "*mocha tests*"))
+      (display-buffer "*mocha tests*" 'display-buffer-pop-up-frame)
+    (mocha-run buffer-file-name)
+    )
+  )
+
 (setq last-buffer-name nil)
 (defun save-and-test-file ()
   "Test the current file."
-  (interactive)
-  (setq last-buffer-name (buffer-file-name))
-  (mocha-run (buffer-file-name)))
+  (interactive)  
+  (let ((old-buffer-name last-buffer-name))
+    (setq last-buffer-name (buffer-file-name))
+  
+    (mocha-run-or-reveal (buffer-file-name) (string= old-buffer-name (buffer-file-name)))
+    )
+  )
 
 
 (defun test-last-file ()
   "Test the current file."
   (interactive)
-  (mocha-run last-buffer-name))
-
+  (mocha-run-or-reveal last-buffer-name t))
 
 (defun smart-test-file ()
   (interactive)
   (let ((buffer-is-test-file (string/ends-with (buffer-file-name) "test.js")))
     (if buffer-is-test-file
         (save-and-test-file)
-      (test-last-file)
+        (test-last-file)
       )
     )
   )
@@ -127,12 +141,15 @@
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
             (define-key js2-mode-map "\C-d/" 'duplicate-line)
+            (define-key js2-mode-map "\C-cs" 'shell-pop)
             (pabbrev-mode)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
                                                     (match-end 1) "\u0192")
                                     nil)))))))
+(eval-after-load 'js2-mode
+  '(add-hook 'js2-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t))))
 
 (add-hook 'rjsx-mode-hook
           (lambda ()
@@ -140,3 +157,21 @@
             (define-key rjsx-mode-map (kbd "C-d") 'duplicate-line)
             )
           )
+
+;; js2-xref mode
+(define-key js2-mode-map (kbd "M-.") nil)
+(add-hook 'js2-mode-hook (lambda ()
+  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
+
+;; (defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
+;;   "Workaround sgml-mode and follow airbnb component style."
+;;   (let* ((cur-line (buffer-substring-no-properties
+;;                     (line-beginning-position)
+;;                     (line-end-position))))
+;;     (if (string-match "^\\( +\\)\/?> *$" cur-line)
+;;       (let* ((empty-spaces (match-string 1 cur-line)))
+;;         (replace-regexp empty-spaces
+;;                         (make-string (- (length empty-spaces) sgml-basic-offset) 32)
+;;                         nil
+;;                         (line-beginning-position) (line-end-position))))))
