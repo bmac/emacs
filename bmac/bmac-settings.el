@@ -1,7 +1,7 @@
 ;; use UTF-8
 (prefer-coding-system 'utf-8)
 
-;; (setq create-lockfiles nil)
+(setq create-lockfiles nil)
 
 ;; Don't make me type out 'yes' and 'no'
 (fset 'yes-or-no-p 'y-or-n-p)

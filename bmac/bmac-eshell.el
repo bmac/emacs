@@ -1,30 +1,3 @@
-(require `xterm-color)
-
-;; comint install
-(progn (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-       (setq comint-output-filter-functions (remove 'ansi-color-process-output comint-output-filter-functions))
-       (setq font-lock-unfontify-region-function 'xterm-color-unfontify-region))
-
-;; comint uninstall
-(progn (remove-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-       (add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
-       (setq font-lock-unfontify-region-function 'font-lock-default-unfontify-region))
-
-;; Also set TERM accordingly (xterm-256color)
-
-;; You can also use it with eshell (and thus get color output from system ls):
-
-(require 'eshell)
-
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (setq xterm-color-preserve-properties t)))
-
-(add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-(setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-
-;;  Don't forget to setenv TERM xterm-256color
-
 (defun curr-dir-git-branch-string (pwd)
   "Returns current git branch as a string, or the empty string if
 PWD is not in a git repo (or the git command is not found)."

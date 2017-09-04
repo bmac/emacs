@@ -10,10 +10,6 @@
 (setq load-path (cons "~/.emacs.d/vendor/" load-path))
 (setq load-path (cons "~/.emacs.d/bmac/" load-path))
 
-;; use a package manager
-(setq prelude-packages '(cl-lib browse-kill-ring find-file-in-repository git-gutter git-gutter-fringe js2-mode markdown-mode stylus-mode rust-mode neotree flx-ido color-theme-solarized))
-(require 'prelude-packages)
-
 ;;Make sure .emacs file is edited in lisp mode
 (setq auto-mode-alist (cons '("\.emacs" . lisp-mode) auto-mode-alist))
 
@@ -37,8 +33,6 @@
 (load "bmac-hippie-expand.el")
 
 (load "bmac-javascript.el")
-
-(require 'browse-kill-ring)
 
 (load "bmac-abbrev-table.el")
 (custom-set-variables
@@ -65,7 +59,7 @@
  '(mocha-which-node "")
  '(package-selected-packages
    (quote
-    (shell-pop magit typescript-mode moe-theme fancy-battery smart-mode-line better-shell xterm-color rjsx-mode eslint-fix js2-mode xref-js2 yaml-mode stylus-mode projectile pabbrev neotree markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository discover-js2-refactor color-theme-solarized browse-kill-ring)))
+    (ivy shell-pop magit typescript-mode fancy-battery smart-mode-line rjsx-mode js2-mode xref-js2 yaml-mode stylus-mode projectile pabbrev neotree markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
  '(sgml-basic-offset 2)
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
  '(shell-pop-window-size 22)
@@ -80,8 +74,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(setq create-lockfiles nil)
 
 (require 'fancy-battery)
 (fancy-battery-mode)
