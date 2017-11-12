@@ -75,7 +75,5 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; (require 'fancy-battery)
-;; (fancy-battery-mode)
-(smart-mode-line-enable)
+;; (smart-mode-line-enable)
 (load "renpy.el")
