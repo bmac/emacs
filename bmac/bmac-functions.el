@@ -173,23 +173,6 @@ If point was already at that position, move point to beginning of line."
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
 
-(defun neotree-project-dir ()
-  "Open NeoTree using the git root."
-  (interactive)
-  (let ((project-dir (ffir-locate-dominating-file
-                      default-directory
-                      (lambda (directory)
-                        (ffir-directory-contains-which-file
-                         ffir-repository-types directory))))
-        (file-name (buffer-file-name)))
-    (if project-dir
-        (progn
-          (neotree-dir project-dir)
-          (neotree-find file-name))
-      (message "Could not find git project root."))))
-(global-set-key "\C-c\C-p" 'neotree-project-dir)
-
-
 (defun next-10-lines ()
   (next-line 10)
 )
