@@ -142,7 +142,6 @@
             (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
             (define-key js2-mode-map "\C-d/" 'duplicate-line)
             (define-key js2-mode-map "\C-cs" 'shell-pop)
-            (pabbrev-mode)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
