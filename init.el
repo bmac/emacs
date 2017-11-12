@@ -6,6 +6,8 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (setq load-path (cons "~/.emacs.d/vendor/" load-path))
 (setq load-path (cons "~/.emacs.d/bmac/" load-path))
@@ -58,10 +60,8 @@
  '(mocha-which-node "")
  '(package-selected-packages
    (quote
-    (ivy shell-pop magit typescript-mode fancy-battery smart-mode-line rjsx-mode js2-mode xref-js2 yaml-mode stylus-mode projectile pabbrev neotree markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
+    (magit typescript-mode rjsx-mode js2-mode xref-js2 yaml-mode stylus-mode projectile markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
  '(sgml-basic-offset 2)
- '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
- '(shell-pop-window-size 22)
  '(solarized-termcolors 256)
  '(xref-js2-definitions-regexps
    (quote

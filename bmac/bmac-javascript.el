@@ -1,5 +1,4 @@
 (require 'mocha)
-(require 'shell-pop)
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
 ;;http://steve-yegge.blogspot.com/2008/03/js2-mode-new-javascript-mode-for-emacs.html
@@ -141,7 +140,6 @@
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
             (define-key js2-mode-map "\C-d/" 'duplicate-line)
-            (define-key js2-mode-map "\C-cs" 'shell-pop)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
