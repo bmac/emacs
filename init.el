@@ -36,6 +36,8 @@
 
 (load "bmac-javascript.el")
 
+(load "bmac-helm.el")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -72,7 +74,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(header-line ((t (:foreground "#8a8a8a" :inverse-video nil))))
+ '(helm-candidate-number-suspended ((t nil)))
+ '(helm-header ((t nil)))
+ '(helm-header-line-left-margin ((t nil)))
+ '(helm-match ((t (:background "#d75f00" :foreground "#262626"))))
+ '(helm-match-item ((t (:foreground "#262626"))))
+ '(helm-selection ((t nil)))
+ '(helm-selection-line ((t (:background "#262626" :foreground "#262626"))))
+ '(helm-source-header ((t nil))))
 
 ;; (smart-mode-line-enable)
 (load "renpy.el")
