@@ -62,8 +62,9 @@
  '(mocha-which-node "")
  '(package-selected-packages
    (quote
-    (magit typescript-mode rjsx-mode js2-mode xref-js2 yaml-mode stylus-mode projectile markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
+    (vim-empty-lines-mode helm-projectile helm magit typescript-mode rjsx-mode js2-mode xref-js2 yaml-mode stylus-mode projectile markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
  '(sgml-basic-offset 2)
+ '(solarized-broken-srgb t)
  '(solarized-termcolors 256)
  '(xref-js2-definitions-regexps
    (quote
