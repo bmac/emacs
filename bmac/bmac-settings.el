@@ -44,7 +44,7 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 
 (global-set-key (kbd "s-t") 'find-file-in-repository)
-(global-set-key (kbd "C-x f") 'find-file-in-repository)
+;; (global-set-key (kbd "C-x f") 'find-file-in-repository)
 
 
 ;; reopen all files when the change on disk
@@ -148,13 +148,13 @@
 ;;  (exec-path-from-shell-initialize))
 
 
-(require 'flx-ido)
+;; (require 'flx-ido)
 (ido-mode 1)
-(ido-everywhere 1)
-(flx-ido-mode 1)
+;; (ido-everywhere 1)
+;; (flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-use-faces nil)
 
 
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
