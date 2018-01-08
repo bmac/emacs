@@ -154,8 +154,6 @@
                           (0 (progn (compose-region (match-beginning 1)
                                                     (match-end 1) "\u0192")
                                     nil)))))))
-(eval-after-load 'js2-mode
-  '(add-hook 'js2-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t))))
 
 (add-hook 'rjsx-mode-hook
           (lambda ()
