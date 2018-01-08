@@ -48,8 +48,8 @@
 (global-auto-revert-mode t)
 
 ;;lium.el from http://stud4.tuwien.ac.at/~e0225855/linum/linum.html
-; (require 'linum)
-; (global-linum-mode t)
+(require 'linum)
+(global-linum-mode t)
 
 ;; use shift alt arrow keys to move in split screen
 (windmove-default-keybindings 'meta)
