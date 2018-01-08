@@ -162,10 +162,8 @@
             )
           )
 
-;; js2-xref mode
-(define-key js2-mode-map (kbd "M-.") nil)
-(add-hook 'js2-mode-hook (lambda ()
-  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+(define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
+(define-key js2-mode-map (kbd "M-,") 'dumb-jump-back)
 
 
 ;; (defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
