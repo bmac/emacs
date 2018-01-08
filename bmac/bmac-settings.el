@@ -24,9 +24,6 @@
 ;;over ride ctrl z
 ;; (global-set-key "\C-z" nil)
 
-;; move down when line wrap
-(setq line-move-visual nil)
-
 ;;change Backspace to remove both () when point is in the middle
 (global-set-key (kbd "<DEL>") 'backward-delete-char-untabify)
 
