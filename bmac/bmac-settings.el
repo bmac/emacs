@@ -168,3 +168,7 @@
 
 (setq interprogram-cut-function 'paste-to-osx)
 (setq interprogram-paste-function 'copy-from-osx)
+
+
+(electric-indent-mode -1)
+(global-set-key (kbd "RET") 'newline-and-indent)
