@@ -97,6 +97,9 @@
 (setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
 (defun mocha-run-or-reveal (buffer-file-name reveal)
+  (unless (get-buffer-window "*mocha tests*")
+    (window-configuration-to-register ?p)
+    )
   (if (and reveal (get-buffer "*mocha tests*"))
       (display-buffer "*mocha tests*" 'display-buffer-pop-up-frame)
     (mocha-run buffer-file-name)
@@ -130,12 +133,18 @@
     )
   )
 
+(defun bmac-test-dismiss ()
+  (interactive)
+  (jump-to-register ?p)
+  )
+
 ;; Use lambda for anonymous functions
 (add-hook 'js2-mode-hook
           (lambda ()
             ;;(define-key js2-mode-map "\C-c\C-c" 'test-js)
             ;;(define-key js2-mode-map "\C-cc" 'test-js)
             (define-key js2-mode-map "\C-ct" 'smart-test-file)
+            (define-key js2-mode-map "\C-cd" 'bmac-test-dismiss)
             ;;(define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
