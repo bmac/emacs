@@ -149,6 +149,7 @@
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
             (define-key js2-mode-map "\C-d/" 'duplicate-line)
+            (define-key js2-mode-map "\C-cg" 'projectile-grep)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
