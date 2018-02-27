@@ -63,6 +63,7 @@
  '(package-selected-packages
    (quote
     (rust-mode dumb-jump helm-projectile helm magit typescript-mode rjsx-mode js2-mode yaml-mode stylus-mode projectile markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
+ '(projectile-use-git-grep t)
  '(sgml-basic-offset 2)
  '(solarized-broken-srgb t)
  '(solarized-termcolors 256)
