@@ -172,3 +172,10 @@
 
 (electric-indent-mode -1)
 (global-set-key (kbd "RET") 'newline-and-indent)
+
+
+(add-hook 'renpy-mode-hook
+          (lambda ()
+            (define-key renpy-mode-map (kbd "C-c C-c") 'recompile)
+            (define-key renpy-mode-map (kbd "C-c c") 'recompile)
+            ))
