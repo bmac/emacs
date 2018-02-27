@@ -1,4 +1,4 @@
-(require 'mocha)
+;(require 'mocha)
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
 ;;http://steve-yegge.blogspot.com/2008/03/js2-mode-new-javascript-mode-for-emacs.html
@@ -141,6 +141,8 @@
 ;; Use lambda for anonymous functions
 (add-hook 'js2-mode-hook
           (lambda ()
+            (require 'mocha)
+
             ;;(define-key js2-mode-map "\C-c\C-c" 'test-js)
             ;;(define-key js2-mode-map "\C-cc" 'test-js)
             (define-key js2-mode-map "\C-ct" 'smart-test-file)
