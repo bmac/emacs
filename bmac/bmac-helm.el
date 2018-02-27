@@ -44,3 +44,4 @@
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x f") 'helm-projectile-find-file)
+(global-set-key (kbd "C-c g") 'projectile-grep)
