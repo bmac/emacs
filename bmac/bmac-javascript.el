@@ -152,6 +152,8 @@
             (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
             (define-key js2-mode-map "\C-d/" 'duplicate-line)
             (define-key js2-mode-map "\C-cg" 'projectile-grep)
+            (define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
+            (define-key js2-mode-map (kbd "M-,") 'dumb-jump-back)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
@@ -165,8 +167,6 @@
             )
           )
 
-(define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
-(define-key js2-mode-map (kbd "M-,") 'dumb-jump-back)
 
 
 ;; (defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
