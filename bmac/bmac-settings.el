@@ -48,8 +48,8 @@
 (global-auto-revert-mode t)
 
 ;;lium.el from http://stud4.tuwien.ac.at/~e0225855/linum/linum.html
-(require 'linum)
-(global-linum-mode t)
+;(require 'nlinum)
+;;(global-nlinum-mode t)
 
 ;; use shift alt arrow keys to move in split screen
 (windmove-default-keybindings 'meta)
@@ -123,7 +123,7 @@
   ;; else terminal
   (progn
     (require 'git-gutter)
-    (git-gutter:linum-setup)
+    ;;(git-gutter:linum-setup)
     ))
 (global-git-gutter-mode t)
 
