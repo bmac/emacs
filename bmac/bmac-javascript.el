@@ -15,7 +15,7 @@
       js2-indent-on-enter-key nil
       js2-basic-offset 2
       js2-global-externs '("$" "Backbone" "_" "ko" "angular" "Ember" "require" "module" "exports" "define" "Promise")
-      js2-idle-timer-delay 1)
+      js2-idle-timer-delay 0.2)
 
 (setq compilation-scroll-output t)
 (defun test-js ()
