@@ -176,3 +176,14 @@ If point was already at that position, move point to beginning of line."
 (defun next-10-lines ()
   (next-line 10)
 )
+
+
+(defun open-journal (&optional arg)
+  (interactive)
+  (find-file
+   (concat "~/code/journal/"
+           (shell-command-to-string "echo -n $(date +%Y%m%d)")
+           ".md")
+   ))
+
+(global-set-key "\C-c\j" 'open-journal)
