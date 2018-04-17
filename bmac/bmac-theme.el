@@ -1,10 +1,8 @@
-(custom-set-variables '(solarized-termcolors 256))
-
-(setq solarized-default-background-mode 'dark)
-;; (setq solarized-degrade t)
-;; (setq solarized-broken-srgb t)
-
-(setq solarized-colors           ; ANSI(Solarized terminal)
+(use-package solarized-theme
+  :custom (solarized-termcolors 256)
+  :init
+  (setq frame-background-mode 'dark)
+  (setq solarized-colors           ; ANSI(Solarized terminal)
   ;; name     sRGB      Gen RGB   256       16              8
   '((base03  "#002b36" "#042028" nil "brightblack"   "black") ;; nil replaces "#1c1c1c"
     (base02  "#073642" "#0a2832" "#262626" "black"         "black")
@@ -23,15 +21,5 @@
     (cyan    "#2aa198" "#259185" "#00afaf" "cyan"          "cyan")
     (green   "#859900" "#728a05" "#5f8700" "green"         "green")))
 
-(load-theme 'solarized t)
-
-(defun set-background-mode (frame mode)
-  (set-frame-parameter frame 'background-mode mode)
-  (when (not (display-graphic-p frame))
-    (set-terminal-parameter (frame-terminal frame) 'background-mode mode))
-  (enable-theme 'solarized))
-
-(add-hook 'after-make-frame-functions
-          (lambda (frame) (set-background-mode frame solarized-default-background-mode)))
-
-(set-background-mode nil solarized-default-background-mode)
+  (load-theme 'solarized t)
+  )

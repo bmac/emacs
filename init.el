@@ -1,20 +1,26 @@
-;; Set the load path
-;;(setq load-path (cons "~/.emacs.d/" load-path))
+(setq gc-cons-threshold 64000000)
+(add-hook 'after-init-hook (lambda ()
+                             ;; restore after startup
+                             (setq gc-cons-threshold 800000)))
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(setq-default use-package-always-defer t
+              use-package-always-ensure nil)
 
 (setq load-path (cons "~/.emacs.d/vendor/" load-path))
 (setq load-path (cons "~/.emacs.d/bmac/" load-path))
-
-;;Make sure .emacs file is edited in lisp mode
-(setq auto-mode-alist (cons '("\.emacs" . lisp-mode) auto-mode-alist))
-
 
 ;;bmac.el stuff is custom setting of
 ;;various libs
@@ -46,7 +52,7 @@
  '(css-indent-offset 2)
  '(custom-safe-themes
    (quote
-    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(js-indent-level 2)
  '(js-switch-indent-offset 2)
  '(js2-indent-switch-body t)
@@ -62,11 +68,11 @@
  '(mocha-which-node "")
  '(package-selected-packages
    (quote
-    (use-package dumb-jump helm-projectile helm magit typescript-mode rjsx-mode js2-mode yaml-mode stylus-mode projectile markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
+    (solarized-theme use-package dumb-jump helm-projectile helm magit typescript-mode rjsx-mode js2-mode yaml-mode stylus-mode projectile markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
  '(projectile-use-git-grep t)
  '(sgml-basic-offset 2 t)
  '(solarized-broken-srgb t)
- '(solarized-termcolors 256)
+ '(solarized-termcolors 256))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,5 +88,4 @@
  '(helm-selection-line ((t (:background "#262626" :foreground "#262626"))))
  '(helm-source-header ((t nil))))
 
-;; (smart-mode-line-enable)
 ;;(load "renpy.el")

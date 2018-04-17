@@ -40,26 +40,14 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
-(global-set-key (kbd "s-t") 'find-file-in-repository)
-;; (global-set-key (kbd "C-x f") 'find-file-in-repository)
-
-
 ;; reopen all files when the change on disk
 (global-auto-revert-mode t)
-
-;;lium.el from http://stud4.tuwien.ac.at/~e0225855/linum/linum.html
-;(require 'nlinum)
-;;(global-nlinum-mode t)
-
-;; use shift alt arrow keys to move in split screen
-(windmove-default-keybindings 'meta)
 
 (setq confirm-kill-emacs
       (lambda (e)
         (y-or-n-p-with-timeout
          "Really exit Emacs (automatically exits in 3 secs)? " 3 t)))
 (setq x-select-enable-clipboard t)
-(setq require-final-newline t)
 
 ;;set text-mode as the default major mode
 ;;fundamental is kinda useless imo
@@ -104,51 +92,32 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; uniquify!
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'reverse)
-(setq uniquify-separator "|")
-(setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
+(use-package uniquify
+  :ensure nil
+  :config
+  (setq uniquify-buffer-name-style 'reverse)
+  (setq uniquify-separator "|")
+  (setq uniquify-after-kill-buffer-p t)
+  (setq uniquify-ignore-buffers-re "^\\*")
+  (setq uniquify-buffer-name-style 'forward))
 
-
-(if (display-graphic-p)
-    (progn
-      ;; if graphic
-      (require 'git-gutter-fringe)
-      (setq-default left-fringe-width  10))
-  ;; else terminal
+(use-package git-gutter
+  :diminish git-gutter-mode
+  :demand t
+  :bind (("C-x v n" . git-gutter:next-hunk)
+         ("C-x v p" . git-gutter:previous-hunk)
+         ("C-x v r" . git-gutter:revert-hunk))
+  :config
   (progn
-    (require 'git-gutter)
-    ;;(git-gutter:linum-setup)
-    ))
-(global-git-gutter-mode t)
-
-;; Jump to next/previous hunk
-(global-set-key (kbd "C-x v p") 'git-gutter:previous-hunk)
-(global-set-key (kbd "C-x v n") 'git-gutter:next-hunk)
-
-;; Stage current hunk
-;; (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
-
-;; Revert current hunk
-(global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+    (global-git-gutter-mode t)))
 
 
-(setq github-browse-file-show-line-at-point t)
-(global-set-key (kbd "C-x g h") 'github-browse-file)
+(use-package github-browse-file
+  :bind (("C-x g h" . github-browse-file))
+  :config
+  (setq github-browse-file-show-line-at-point t))
 
-;; (when (memq window-system '(mac ns))
-;;  (exec-path-from-shell-initialize))
-
-
-;; (require 'flx-ido)
 (ido-mode 1)
-;; (ido-everywhere 1)
-;; (flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-use-faces nil)
-
 
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
 
@@ -170,17 +139,14 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 
-(add-hook 'renpy-mode-hook
-          (lambda ()
-            (define-key renpy-mode-map (kbd "C-c C-c") 'recompile)
-            (define-key renpy-mode-map (kbd "C-c c") 'recompile)
-            ))
+(use-package renpy-mode
+  :mode "\\.rpy\\'"
+  :bind (("C-c C-c" . recompile)
+         ("C-c c" . recompile)))
 
-
-(add-hook 'python-mode-hook
-          (lambda ()
-            (define-key python-mode-map (kbd "M-.") 'dumb-jump-go)
-            (define-key python-mode-map (kbd "M-,") 'dumb-jump-back)))
+(use-package dumb-jump
+  :bind (("M-." . dumb-jump-go)
+         ("M-," . dumb-jump-back)))
 
 (setq ring-bell-function (lambda ()
                            (invert-face 'mode-line)
