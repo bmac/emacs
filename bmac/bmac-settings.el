@@ -93,7 +93,6 @@
 
 ;; uniquify!
 (use-package uniquify
-  :ensure nil
   :config
   (setq uniquify-buffer-name-style 'reverse)
   (setq uniquify-separator "|")
@@ -103,7 +102,8 @@
 
 (use-package git-gutter
   :diminish git-gutter-mode
-  :demand t
+  ;; :demand t
+  :defer 1
   :bind (("C-x v n" . git-gutter:next-hunk)
          ("C-x v p" . git-gutter:previous-hunk)
          ("C-x v r" . git-gutter:revert-hunk))
@@ -117,7 +117,10 @@
   :config
   (setq github-browse-file-show-line-at-point t))
 
-(ido-mode 1)
+(use-package ido
+  :defer .5
+  :config (progn
+          (ido-mode 1)))
 
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
 

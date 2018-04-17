@@ -44,4 +44,15 @@
 
 (load "bmac-helm.el")
 
+(custom-set-faces
+ '(header-line ((t (:foreground "#8a8a8a" :inverse-video nil))))
+ '(helm-candidate-number-suspended ((t nil)))
+ '(helm-header ((t nil)))
+ '(helm-header-line-left-margin ((t nil)))
+ '(helm-match ((t (:background "#d75f00" :foreground "#262626"))))
+ '(helm-match-item ((t (:foreground "#262626"))))
+ '(helm-selection ((t nil)))
+ '(helm-selection-line ((t (:background "#262626" :foreground "#262626"))))
+ '(helm-source-header ((t nil))))
+
 ;;(load "renpy.el")
