@@ -72,9 +72,6 @@
 ;; Transparently open compressed files
 (auto-compression-mode t)
 
-;; Save a list of recent files visited
-(recentf-mode 1)
-
 ;; Highlight matching parentheses when the point is on them
 (show-paren-mode 1)
 
@@ -91,7 +88,6 @@
       version-control t)
 
 ;; Window switching.
-(windmove-default-keybindings) ;; Shift+direction
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;;back one
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; foward two
 
