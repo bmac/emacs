@@ -175,3 +175,13 @@
             (define-key renpy-mode-map (kbd "C-c C-c") 'recompile)
             (define-key renpy-mode-map (kbd "C-c c") 'recompile)
             ))
+
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "M-.") 'dumb-jump-go)
+            (define-key python-mode-map (kbd "M-,") 'dumb-jump-back)))
+
+(setq ring-bell-function (lambda ()
+                           (invert-face 'mode-line)
+                           (run-with-timer 0.1 nil 'invert-face 'mode-line)))
