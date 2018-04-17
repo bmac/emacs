@@ -14,8 +14,18 @@
       js2-enter-indents-newline t
       js2-indent-on-enter-key nil
       js2-basic-offset 2
-      js2-global-externs '("$" "Backbone" "_" "ko" "angular" "Ember" "require" "module" "exports" "define" "Promise")
+      jsx-indent-level 2
+      js2-indent-switch-body t
       js2-idle-timer-delay 0.2)
+
+
+(setq mocha-command "time node_modules/.bin/mocha"
+ mocha-environment-variables "BUILD_ENV=qa NODE_ENV=test"
+ mocha-options "--colors --compilers js:babel-core/register --require tests/utils/jsdom-setup.js --require tests/utils/shim-webpack-require.js --watch"
+ mocha-reporter "spec"
+ mocha-which-node ""
+ sgml-basic-offset 2 t
+ css-indent-offset 2)
 
 (setq compilation-scroll-output t)
 (defun test-js ()

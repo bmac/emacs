@@ -20,6 +20,7 @@
     (blue    "#268bd2" "#2075c7" "#0087ff" "blue"          "blue")
     (cyan    "#2aa198" "#259185" "#00afaf" "cyan"          "cyan")
     (green   "#859900" "#728a05" "#5f8700" "green"         "green")))
-
+  (setq solarized-termcolors 256
+        solarized-broken-srgb t)
   (load-theme 'solarized t)
   )

@@ -8,40 +8,45 @@
       (setq-local cursor-type nil)))
 
 
-(setq helm-prevent-escaping-from-minibuffer t
-      helm-bookmark-show-location t
-      helm-display-header-line nil
-      helm-split-window-in-side-p t
-      helm-always-two-windows t
-      helm-echo-input-in-header-line t
-      helm-imenu-execute-action-at-once-if-one nil
-      helm-org-format-outline-path t
-      )
-
-(with-eval-after-load 'helm
-  (setq helm-autoresize-min-height 10)
+(use-package helm-config
+  :bind (("M-x" . helm-M-x))
+  :init (setq helm-prevent-escaping-from-minibuffer t
+        helm-bookmark-show-location t
+        helm-display-header-line nil
+        helm-split-window-in-side-p t
+        helm-always-two-windows t
+        helm-echo-input-in-header-line t
+        helm-imenu-execute-action-at-once-if-one nil
+        helm-org-format-outline-path t
+        helm-M-x-fuzzy-match t
+        helm-autoresize-min-height 10
+        )
+  :config
   (helm-autoresize-mode 1)
   (add-hook 'helm-minibuffer-set-up-hook
             'spacemacs//helm-hide-minibuffer-maybe)
+
+  (custom-set-faces
+   '(header-line ((t (:foreground "#8a8a8a" :inverse-video nil))))
+   '(helm-candidate-number-suspended ((t nil)))
+   '(helm-header ((t nil)))
+   '(helm-header-line-left-margin ((t nil)))
+   '(helm-match ((t (:background "#d75f00" :foreground "#262626"))))
+   '(helm-match-item ((t (:foreground "#262626"))))
+   '(helm-selection ((t nil)))
+   '(helm-selection-line ((t (:background "#262626" :foreground "#262626"))))
+   '(helm-source-header ((t nil))))
   )
 
-;; (with-eval-after-load 'helm
-;;   (defvar helm-source-header-default-background
-;;     (face-attribute 'helm-source-header :background))
-;;   (defvar helm-source-header-default-foreground
-;;     (face-attribute 'helm-source-header :foreground))
-;;   (defvar helm-source-header-default-box
-;;     (face-attribute 'helm-source-header :box))
-;;   (defvar helm-source-header-default-height
-;;     (face-attribute 'helm-source-header :height) ))
 
-
-(setq helm-M-x-fuzzy-match t)
-(setq helm-projectile-fuzzy-match t)
-(require 'helm-config)
-(require 'helm-projectile)
-(helm-projectile-on)
-
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x f") 'helm-projectile-find-file)
-(global-set-key (kbd "C-c g") 'projectile-grep)
+(use-package helm-projectile
+  :bind (
+         ("C-x f" . helm-projectile-find-file)
+         ("C-c g" . projectile-grep)
+         )
+  :config
+  (setq
+   helm-projectile-fuzzy-match t
+   projectile-use-git-grep t)
+  (helm-projectile-on)
+  )
