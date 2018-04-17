@@ -34,7 +34,7 @@
 ;;use hippie expand instead of debbrev
 (load "bmac-hippie-expand.el")
 
-(load "bmac-javascript.el")
+;(load "bmac-javascript.el")
 
 (load "bmac-helm.el")
 
@@ -62,15 +62,11 @@
  '(mocha-which-node "")
  '(package-selected-packages
    (quote
-    (rust-mode dumb-jump helm-projectile helm magit typescript-mode rjsx-mode js2-mode yaml-mode stylus-mode projectile markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
+    (use-package dumb-jump helm-projectile helm magit typescript-mode rjsx-mode js2-mode yaml-mode stylus-mode projectile markdown-mode github-browse-file git-gutter-fringe flx-ido find-file-in-repository color-theme-solarized)))
  '(projectile-use-git-grep t)
- '(sgml-basic-offset 2)
+ '(sgml-basic-offset 2 t)
  '(solarized-broken-srgb t)
  '(solarized-termcolors 256)
- '(xref-js2-definitions-regexps
-   (quote
-    ("\\b%s\\b[\\s]*[:=][^=]" "function[\\s]+\\b%s\\b" "^ +\\b%s([a-zA-Z, ]*) {$")))
- '(xref-js2-ignored-files (quote ("*.min.js" "*-test.js"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,4 +83,4 @@
  '(helm-source-header ((t nil))))
 
 ;; (smart-mode-line-enable)
-(load "renpy.el")
+;;(load "renpy.el")
