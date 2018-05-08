@@ -24,7 +24,7 @@
  mocha-options "--colors --compilers js:babel-core/register --require tests/utils/jsdom-setup.js --require tests/utils/shim-webpack-require.js --watch"
  mocha-reporter "spec"
  mocha-which-node ""
- sgml-basic-offset 2 t
+ sgml-basic-offset 2
  css-indent-offset 2)
 
 (setq compilation-scroll-output t)
