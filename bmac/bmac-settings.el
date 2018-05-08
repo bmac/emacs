@@ -111,6 +111,17 @@
   (progn
     (global-git-gutter-mode t)))
 
+(use-package yahoo-weather
+  :defer 1
+  :init
+  (setq yahoo-weather-format "[%(weather) %(temperature)]")
+  (setq yahoo-weather-location "Boston")
+  (setq yahoo-weather-temperture-format "%d")
+  (setq yahoo-weather-use-F t)
+  :config
+  (yahoo-weather-mode)
+  )
+
 
 (use-package github-browse-file
   :bind (("C-x g h" . github-browse-file))
