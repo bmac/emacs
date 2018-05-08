@@ -179,3 +179,11 @@
 (setq ring-bell-function (lambda ()
                            (invert-face 'mode-line)
                            (run-with-timer 0.1 nil 'invert-face 'mode-line)))
+
+;; Display line numbers in emacs 26
+(if (boundp 'global-display-line-numbers-mode)
+    (global-display-line-numbers-mode)
+  nil)
+
+
+(powerline-default-theme)
