@@ -131,7 +131,7 @@
 (use-package ido
   :defer .5
   :config (progn
-          (ido-mode 1)))
+            (ido-mode 1)))
 
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
 
@@ -161,6 +161,20 @@
 (use-package dumb-jump
   :bind (("M-." . dumb-jump-go)
          ("M-," . dumb-jump-back)))
+
+(use-package crux
+  :bind (
+         ("C-c d" . crux-duplicate-current-line-or-region)
+         ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
+         ("C-c n" . crux-cleanup-buffer-or-region)
+         ("C-c s" . crux-swap-windows)
+         ))
+
+(use-package drag-stuff
+  :bind (
+         ("M-n" . drag-stuff-down)
+         ("M-p" . drag-stuff-up)
+         ))
 
 (setq ring-bell-function (lambda ()
                            (invert-face 'mode-line)
