@@ -3,7 +3,7 @@
 PWD is not in a git repo (or the git command is not found)."
   (interactive)
   (if (and (eshell-search-path "git")
-             (locate-dominating-file pwd ".git"))
+           (locate-dominating-file pwd ".git"))
       (let ((git-branch (shell-command-to-string (concat "git branch | grep '\\*' | sed -e 's/^\\* //'")))
             (git-commit (shell-command-to-string (concat "git reflog 2> /dev/null | head -n1 | awk '{print $1}'"))))
         (concat
@@ -20,11 +20,18 @@ PWD is not in a git repo (or the git command is not found)."
          ))
     ""))
 
+(use-package eshell
+  :bind (
+         ("C-c e" . eshell)
+         )
+  :init
+  (setq eshell-prompt-function
+        (lambda ()
+          (concat (propertize (abbreviate-file-name (eshell/pwd)) 'face `(:foreground "#8A9796"))
+                  (curr-dir-git-branch-string (eshell/pwd))
+                  (propertize "\n$ " 'face `(:foreground "#8A9796")))))
 
-(setq eshell-prompt-function
-      (lambda ()
-        (concat (propertize (abbreviate-file-name (eshell/pwd)) 'face `(:foreground "#8A9796"))
-                (curr-dir-git-branch-string (eshell/pwd))
-                (propertize "\n$ " 'face `(:foreground "#8A9796")))))
-
-(setq eshell-prompt-regexp "\$ ")
+  (setq eshell-prompt-regexp "\$ ")
+  :config
+  (setenv "TERM" "xterm-256color")
+  )
