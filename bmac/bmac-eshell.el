@@ -33,5 +33,4 @@ PWD is not in a git repo (or the git command is not found)."
 
   (setq eshell-prompt-regexp "\$ ")
   :config
-  (setenv "TERM" "xterm-256color")
   )
