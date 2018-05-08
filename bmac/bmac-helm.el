@@ -9,7 +9,10 @@
 
 
 (use-package helm-config
-  :bind (("M-x" . helm-M-x))
+  :bind (
+         ("M-x" . helm-M-x)
+         ("M-i" . helm-imenu)
+         )
   :init (setq helm-prevent-escaping-from-minibuffer t
         helm-bookmark-show-location t
         helm-display-header-line nil
@@ -28,6 +31,18 @@
   )
 
 
+(use-package projectile
+  :diminish projectile-mode
+  :config
+  (setq
+   helm-projectile-fuzzy-match t
+   projectile-use-git-grep t)
+  (projectile-register-project-type 'webkit-py '("Tools" "LayoutTests")
+                                  ;; :compile "cmake"
+                                  :test "PYTHONPATH=./Tools/Scripts/ python -m unittest discover"
+                                  :test-suffix "_unittest")
+  )
+
 (use-package helm-projectile
   :bind (
          ("C-x f" . helm-projectile-find-file)
@@ -35,7 +50,7 @@
          )
   :config
   (setq
-   helm-projectile-fuzzy-match t
-   projectile-use-git-grep t)
+   helm-projectile-fuzzy-match t)
+  (projectile-mode)
   (helm-projectile-on)
   )
