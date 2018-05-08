@@ -186,4 +186,10 @@
   nil)
 
 
-(powerline-default-theme)
+
+(use-package powerline
+  :defer 0
+  :config
+  (setq powerline-display-mule-info nil)
+  (powerline-default-theme)
+  )
