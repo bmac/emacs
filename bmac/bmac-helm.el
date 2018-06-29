@@ -35,7 +35,6 @@
   :diminish projectile-mode
   :config
   (setq
-   helm-projectile-fuzzy-match t
    projectile-use-git-grep t)
   (projectile-register-project-type 'webkit-py '("Tools" "LayoutTests")
                                   ;; :compile "cmake"
