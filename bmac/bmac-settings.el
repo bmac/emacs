@@ -129,7 +129,7 @@
   (setq github-browse-file-show-line-at-point t))
 
 (use-package ido
-  :defer .5
+  :defer .1
   :config (progn
             (ido-mode 1)))
 
