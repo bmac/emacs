@@ -152,6 +152,7 @@
 (add-hook 'js2-mode-hook
           (lambda ()
             (require 'mocha)
+            (setq js2-basic-offset 2)
 
             ;;(define-key js2-mode-map "\C-c\C-c" 'test-js)
             ;;(define-key js2-mode-map "\C-cc" 'test-js)
