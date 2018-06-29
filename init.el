@@ -60,3 +60,16 @@
  '(helm-source-header ((t nil))))
 
 ;;(load "renpy.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(mocha-command "time node_modules/.bin/jest")
+ '(mocha-environment-variables "")
+ '(mocha-options "--watch")
+ '(mocha-reporter "")
+ '(package-selected-packages
+   (quote
+    (mocha yaml-mode yahoo-weather use-package solarized-theme rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe feebleline dumb-jump drag-stuff diminish crux)))
+ )
