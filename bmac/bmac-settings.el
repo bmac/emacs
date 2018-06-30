@@ -129,7 +129,12 @@
   (setq github-browse-file-show-line-at-point t))
 
 (use-package ido
-  :bind (("C-x C-f" . ido-find-file))
+  :bind (
+         ("C-x C-f" . ido-find-file)
+         ("C-x b" . ido-switch-buffer)
+         ("C-x d" . ido-dired)
+         ("C-x k" . ido-kill-buffer)
+         )
   :config (progn
             (ido-mode 1)))
 
