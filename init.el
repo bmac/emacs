@@ -71,5 +71,5 @@
  '(mocha-reporter "")
  '(package-selected-packages
    (quote
-    (mocha yaml-mode yahoo-weather use-package solarized-theme rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe feebleline dumb-jump drag-stuff diminish crux)))
+    (mocha yaml-mode yahoo-weather use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe feebleline dumb-jump drag-stuff diminish crux)))
  )
