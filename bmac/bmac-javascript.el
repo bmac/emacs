@@ -163,9 +163,23 @@
   (jump-to-register ?p)
   )
 
+
+(require 'prettier-js)
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+
+
+(defun react-close-tag ()
+  (interactive)
+  (funcall ;; Toggle modes.
+   (prog1 major-mode
+     (sgml-mode)
+     (sgml-close-tag))))
+
+
 ;; Use lambda for anonymous functions
 (add-hook 'js2-mode-hook
           (lambda ()
+            (diminish 'prettier-js-mode)
             (require 'mocha)
             (setq js2-basic-offset 2)
 
@@ -175,9 +189,9 @@
             (define-key js2-mode-map "\C-cd" 'bmac-test-dismiss)
             ;;(define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
-            (define-key js2-mode-map "\C-c/" 'sgml-close-tag)
-            (define-key js2-mode-map "\C-d/" 'duplicate-line)
-            (define-key js2-mode-map "\C-cg" 'projectile-grep)
+            (define-key js2-mode-map "\C-c/" 'react-close-tag)
+            (define-key js2-mode-map "\C-cd" 'duplicate-line)
+            ;; (define-key js2-mode-map "\C-cg" 'projectile-grep)
             (define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
             (define-key js2-mode-map (kbd "M-,") 'dumb-jump-back)
             (font-lock-add-keywords
