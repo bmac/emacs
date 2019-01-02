@@ -81,7 +81,7 @@
 (defun toggle-test-file ()
   (interactive)
   (let ((filename buffer-file-name)
-        (buffer-is-test-file (string/ends-with (buffer-file-name) "test.js")))
+        (buffer-is-test-file (string/ends-with (buffer-file-name) "spec.js")))
     (if buffer-is-test-file
         (find-file (get-app-file filename))
       (find-file (get-test-file filename))
@@ -150,7 +150,7 @@
 
 (defun smart-test-file ()
   (interactive)
-  (let ((buffer-is-test-file (string/ends-with (buffer-file-name) "test.js")))
+  (let ((buffer-is-test-file (string/ends-with (buffer-file-name) "spec.js")))
     (if buffer-is-test-file
         (save-and-test-file)
         (test-last-file)
