@@ -134,10 +134,10 @@
 (setq last-buffer-name nil)
 (defun save-and-test-file ()
   "Test the current file."
-  (interactive)  
+  (interactive)
   (let ((old-buffer-name last-buffer-name))
     (setq last-buffer-name (buffer-file-name))
-  
+
     (mocha-run-or-reveal (buffer-file-name) (string= old-buffer-name (buffer-file-name)))
     )
   )
@@ -181,8 +181,6 @@
           (lambda ()
             (diminish 'prettier-js-mode)
             (require 'mocha)
-            (setq js2-basic-offset 2)
-
             ;;(define-key js2-mode-map "\C-c\C-c" 'test-js)
             ;;(define-key js2-mode-map "\C-cc" 'test-js)
             (define-key js2-mode-map "\C-ct" 'smart-test-file)
