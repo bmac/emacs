@@ -44,6 +44,8 @@
 
 (load "bmac-helm.el")
 
+(savehist-mode t)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -65,11 +67,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mocha-command "time node_modules/.bin/jest")
- '(mocha-environment-variables "")
- '(mocha-options "--watch")
- '(mocha-reporter "")
+ '(helm-ag-ignore-patterns (quote ("node_modules" "cache" ".log")))
+ '(helm-ag-insert-at-point (quote symbol))
+ '(mocha-command "time node_modules/.bin/mocha")
+ '(mocha-environment-variables "NODE_ENV=test")
+ '(mocha-options "--watch --require ./test/setup.js")
+ '(mocha-reporter "spec")
  '(package-selected-packages
    (quote
-    (mocha yaml-mode yahoo-weather use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe feebleline dumb-jump drag-stuff diminish crux)))
- )
+    (company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux))))
