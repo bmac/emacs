@@ -140,6 +140,7 @@
             (ido-mode 1)))
 
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 
 
 (defun copy-from-osx ()
