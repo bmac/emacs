@@ -5,18 +5,33 @@
 ;; Now using fork from https://github.com/mooz/js2-mode
 ;; emacs --batch -f batch-byte-compile js2-mode.el
 ;;(setq js2-use-font-lock-faces t)
-(autoload 'js2-mode "js2-mode" nil t)
+;;(autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
+;; (add-to-list 'auto-mode-alist '("\\.js$" . tide-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 (setq js2-consistent-level-indent-inner-bracket-p t
       js2-pretty-multiline-decl-indentation-p t
       js2-cleanup-whitespace t
       js2-enter-indents-newline t
       js2-indent-on-enter-key nil
-      js2-basic-offset 2
-      jsx-indent-level 2
+      js2-basic-offset 4
+      jsx-indent-level 4
+      js-indent-level 4
       js2-indent-switch-body t
       js2-idle-timer-delay 0.2)
+
+
+
+;; from the Tide README
+(defun setup-tide-mode ()
+  "Set up Tide mode."
+  (interactive)
+  (tide-setup)
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (setq company-backends '(company-tide))
+  (company-mode +1)
+  )
 
 
 (setq mocha-command "time node_modules/.bin/mocha"
@@ -175,6 +190,11 @@
           (lambda ()
             (define-key rjsx-mode-map "<" 'self-insert-command)
             (define-key rjsx-mode-map (kbd "C-d") 'duplicate-line)
+            (setup-tide-mode)
+            (diminish 'eldoc-mode)
+            (diminish 'compiling-mode)
+            (diminish 'company-mode)
+            (diminish 'tide-mode)
             )
           )
 
