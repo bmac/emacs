@@ -81,7 +81,7 @@
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; foward two
 
 ;; highlight the current line
-(global-hl-line-mode 1)
+;; (global-hl-line-mode 1)
 
 ;; Use system trash (for emacs 23)
 (setq delete-by-moving-to-trash t)
