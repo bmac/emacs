@@ -7,11 +7,20 @@
                      `(:background ,bg-color :foreground ,bg-color)))
       (setq-local cursor-type nil)))
 
+(defun search-project ()
+  (interactive)
+  (helm-ag (projectile-root-bottom-up default-directory '("package.json"))))
+
+(defun search-parent-project ()
+  (interactive)
+  (helm-ag (projectile-root-bottom-up default-directory '("lerna.json"))))
 
 (use-package helm-config
   :bind (
          ("M-x" . helm-M-x)
          ("M-i" . helm-imenu)
+         ("C-c h" . helm-ag)
+         ("C-c y" . helm-resume)
          )
   :init (setq helm-prevent-escaping-from-minibuffer t
         helm-bookmark-show-location t
@@ -33,6 +42,11 @@
 
 (use-package projectile
   :diminish projectile-mode
+  :bind (
+         ("C-c g" . search-project)
+         ("C-c f" . search-parent-project)
+         )
+  :init (require 'projectile)
   :config
   (setq
    projectile-use-git-grep t)
@@ -45,11 +59,12 @@
 (use-package helm-projectile
   :bind (
          ("C-x f" . helm-projectile-find-file)
-         ("C-c g" . projectile-grep)
          )
   :config
   (setq
-   helm-projectile-fuzzy-match t)
+   helm-projectile-fuzzy-match t
+   projectile-enable-caching t
+   )
   (projectile-mode)
   (helm-projectile-on)
   )
