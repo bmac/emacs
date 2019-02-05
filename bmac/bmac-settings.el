@@ -124,10 +124,13 @@
 ;;   )
 
 
-(use-package github-browse-file
-  :bind (("C-x g h" . github-browse-file))
-  :config
-  (setq github-browse-file-show-line-at-point t))
+;; (use-package github-browse-file
+;;   :bind (("C-x g h" . github-browse-file))
+;;   :config
+;;   (setq github-browse-file-show-line-at-point t))
+
+(use-package magit
+  :bind (("C-x g" . magit-status)))
 
 (use-package ido
   :bind (
@@ -188,9 +191,9 @@
                            (run-with-timer 0.1 nil 'invert-face 'mode-line)))
 
 ;; Display line numbers in emacs 26
-(if (boundp 'global-display-line-numbers-mode)
-    (global-display-line-numbers-mode)
-  nil)
+;; (if (boundp 'global-display-line-numbers-mode)
+;;     (global-display-line-numbers-mode)
+;;   nil)
 
 
 
