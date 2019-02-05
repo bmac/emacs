@@ -207,6 +207,7 @@
             (diminish 'compiling-mode)
             (diminish 'company-mode)
             (diminish 'tide-mode)
+            (define-key tide-mode-map (kbd "M-.") 'dumb-jump-go)
             )
           )
 
