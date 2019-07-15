@@ -30,6 +30,7 @@
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
   (setq company-backends '(company-tide))
+  (setq company-tooltip-align-annotations t)
   (company-mode +1)
   )
 
