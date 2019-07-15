@@ -124,10 +124,10 @@
 ;;   )
 
 
-;; (use-package github-browse-file
-;;   :bind (("C-x g h" . github-browse-file))
-;;   :config
-;;   (setq github-browse-file-show-line-at-point t))
+(use-package github-browse-file
+  :bind (("C-c v" . github-browse-file))
+  :config
+  (setq github-browse-file-show-line-at-point t))
 
 (use-package magit
   :bind (("C-x g" . magit-status)))
