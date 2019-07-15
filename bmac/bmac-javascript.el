@@ -191,8 +191,8 @@
             (define-key js2-mode-map "\C-c/" 'react-close-tag)
             (define-key js2-mode-map "\C-cd" 'duplicate-line)
             ;; (define-key js2-mode-map "\C-cg" 'projectile-grep)
-            (define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
-            (define-key js2-mode-map (kbd "M-,") 'dumb-jump-back)
+            ;;(define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
+            ;; (define-key js2-mode-map (kbd "M-,") 'dumb-jump-back)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
@@ -208,7 +208,8 @@
             (diminish 'compiling-mode)
             (diminish 'company-mode)
             (diminish 'tide-mode)
-            (define-key tide-mode-map (kbd "M-.") 'dumb-jump-go)
+            ;; (define-key tide-mode-map (kbd "M-.") 'dumb-jump-go)
+            (define-key tide-mode-map (kbd "\C-cm") 'company-complete)
             )
           )
 
