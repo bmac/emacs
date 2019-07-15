@@ -67,4 +67,13 @@
    )
   (projectile-mode)
   (helm-projectile-on)
+  (cl-callf append (alist-get 'filtered-candidate-transformer helm-source-find-files)
+  '(helm-adaptive-sort))
+
+(advice-add 'helm-execute-persistent-action :before
+            (defun $helm-adaptive-files-add (&rest _)
+              (when (and helm-adaptive-mode
+                         (equal "*helm find files*" helm-buffer))
+                (let (helm-adaptive-done)
+                  (helm-adaptive-store-selection)))))
   )
