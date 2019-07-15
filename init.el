@@ -59,7 +59,12 @@
  '(helm-match-item ((t (:foreground "#262626"))))
  '(helm-selection ((t nil)))
  '(helm-selection-line ((t (:background "#262626" :foreground "#262626"))))
- '(helm-source-header ((t nil))))
+ '(helm-source-header ((t nil)))
+ '(magit-diff-added ((t (:foreground "#ddffdd"))))
+ '(magit-diff-added-highlight ((t (:foreground "#8abc34"))))
+ '(magit-diff-context-highlight ((t (:foreground "grey70"))))
+ '(magit-diff-removed ((t (:foreground "#ffdddd"))))
+ '(magit-diff-removed-highlight ((t (:foreground "#ff6454")))))
 
 ;;(load "renpy.el")
 (custom-set-variables
