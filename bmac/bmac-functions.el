@@ -206,3 +206,8 @@ If point was already at that position, move point to beginning of line."
    ))
 
 (global-set-key "\C-c\j" 'open-journal)
+
+
+(defun vim-shell-command (command)
+  (interactive (list (read-shell-command "Shell command: ")))
+  (suspend-emacs (concat command ";read -n 1 -s -r -p 'Press any key to continue'; fg")))
