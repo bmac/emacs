@@ -42,6 +42,8 @@
 
 (load "bmac-javascript.el")
 
+(load "bmac-rust.el")
+
 (load "bmac-helm.el")
 
 (savehist-mode t)
@@ -72,12 +74,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(helm-ag-ignore-patterns (quote ("node_modules" "cache" ".log")))
- '(helm-ag-insert-at-point (quote symbol))
- '(mocha-command "time node_modules/.bin/mocha")
- '(mocha-environment-variables "NODE_ENV=test")
- '(mocha-options "--watch --require ./test/setup.js")
- '(mocha-reporter "spec")
+ '(helm-ag-ignore-patterns '("node_modules" "cache" ".log"))
+ '(helm-ag-insert-at-point 'symbol)
+ '(mocha-command "time node_modules/.bin/mocha" t)
+ '(mocha-environment-variables "NODE_ENV=test" t)
+ '(mocha-options "--watch --require ./test/setup.js" t)
+ '(mocha-reporter "spec" t)
  '(package-selected-packages
-   (quote
-    (company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux))))
+   '(auto-complete racer company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux)))
