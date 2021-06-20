@@ -53,6 +53,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(flycheck-error ((t (:foreground "red" :underline t))))
  '(header-line ((t (:foreground "#8a8a8a" :inverse-video nil))))
  '(helm-candidate-number-suspended ((t nil)))
  '(helm-header ((t nil)))
@@ -74,6 +75,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(flymake-fringe-indicator-position 'left-fringe)
  '(helm-ag-ignore-patterns '("node_modules" "cache" ".log"))
  '(helm-ag-insert-at-point 'symbol)
  '(mocha-command "time node_modules/.bin/mocha" t)
@@ -81,4 +83,4 @@
  '(mocha-options "--watch --require ./test/setup.js" t)
  '(mocha-reporter "spec" t)
  '(package-selected-packages
-   '(auto-complete racer company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux)))
+   '(flycheck flycheck-rust auto-complete racer company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux)))
