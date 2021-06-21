@@ -40,6 +40,7 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key "\C-cr" 'async-shell-command)
+(global-set-key "\C-cl" 'eslint-disable-macro)
 
 ;; reopen all files when the change on disk
 (global-auto-revert-mode t)
@@ -125,12 +126,9 @@
 
 
 (use-package github-browse-file
-  :bind (("C-c v" . github-browse-file))
+  :bind (("C-x g h" . github-browse-file))
   :config
   (setq github-browse-file-show-line-at-point t))
-
-(use-package magit
-  :bind (("C-x g" . magit-status)))
 
 (use-package ido
   :bind (

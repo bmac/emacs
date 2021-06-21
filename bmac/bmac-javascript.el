@@ -7,6 +7,8 @@
 ;;(setq js2-use-font-lock-faces t)
 ;;(autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx$" . rjsx-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.js$" . tide-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 (setq js2-consistent-level-indent-inner-bracket-p t

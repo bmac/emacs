@@ -54,6 +54,11 @@
                                   ;; :compile "cmake"
                                   :test "PYTHONPATH=./Tools/Scripts/ python -m unittest discover"
                                   :test-suffix "_unittest")
+  (projectile-register-project-type 'npm '("package.json")
+                                                   :compile "npm install"
+                                                   :test "npm test"
+                                                   :run "npm run start"
+                                                   :test-suffix ".spec")
   )
 
 (use-package helm-projectile

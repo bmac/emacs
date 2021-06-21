@@ -205,9 +205,22 @@ If point was already at that position, move point to beginning of line."
            ".md")
    ))
 
+(defun open-month-journal (&optional arg)
+  (interactive)
+  (find-file
+   (concat "~/code/journal/"
+           (shell-command-to-string "echo -n $(date +%Y-%B)")
+           ".md")
+   ))
+
 (global-set-key "\C-c\j" 'open-journal)
+(global-set-key "\C-c\m" 'open-month-journal)
 
 
 (defun vim-shell-command (command)
   (interactive (list (read-shell-command "Shell command: ")))
   (suspend-emacs (concat command ";read -n 1 -s -r -p 'Press any key to continue'; fg")))
+
+(defun eslint-disable-macro ()
+  (interactive)
+  (insert "// eslint-disable-next-line "))
