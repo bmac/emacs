@@ -83,4 +83,4 @@
  '(mocha-options "--watch --require ./test/setup.js" t)
  '(mocha-reporter "spec" t)
  '(package-selected-packages
-   '(flycheck flycheck-rust auto-complete racer company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux)))
+   '(eldoc-overlay typescript-mode projectile dash lsp-mode lsp-ui eglot rustic flycheck flycheck-rust auto-complete racer company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux)))
