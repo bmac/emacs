@@ -78,9 +78,14 @@
  '(flymake-fringe-indicator-position 'left-fringe)
  '(helm-ag-ignore-patterns '("node_modules" "cache" ".log"))
  '(helm-ag-insert-at-point 'symbol)
- '(mocha-command "time node_modules/.bin/mocha" t)
- '(mocha-environment-variables "NODE_ENV=test" t)
- '(mocha-options "--watch --require ./test/setup.js" t)
- '(mocha-reporter "spec" t)
+ '(mocha-command "")
+ '(mocha-environment-variables "")
+ '(mocha-options "--watch")
+ '(mocha-reporter "")
+ '(mocha-which-node "yarn test")
  '(package-selected-packages
-   '(flycheck flycheck-rust auto-complete racer company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux)))
+   '(lsp-mode typescript-mode flycheck flycheck-rust auto-complete racer company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux))
+ '(tide-completion-detailed t))
+ '(md4rd-subs-active
+   (quote
+    (emacs rust programming geopolitics personalfinance economics finance handbalancing circus)))

@@ -8,7 +8,7 @@
 ;;(autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx$" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.js$" . tide-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 (setq js2-consistent-level-indent-inner-bracket-p t
@@ -22,7 +22,10 @@
       js2-indent-switch-body t
       js2-idle-timer-delay 0.2)
 
-
+;; couldn't make it work with `use-package`, plain elisp instead
+(require 'tree-sitter)
+(require 'tree-sitter-langs)
+(add-hook 'typescript-mode-hook #'tree-sitter-hl-mode)
 
 ;; from the Tide README
 (defun setup-tide-mode ()
@@ -214,6 +217,37 @@
             (define-key tide-mode-map (kbd "\C-cm") 'company-complete)
             )
           )
+
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (define-key typescript-mode-map (kbd "C-d") 'duplicate-line)
+            (setup-tide-mode)
+            (diminish 'eldoc-mode)
+            (diminish 'compiling-mode)
+            (diminish 'company-mode)
+            (diminish 'tide-mode)
+            ;; (define-key tide-mode-map (kbd "M-.") 'dumb-jump-go)
+            (define-key tide-mode-map (kbd "\C-cm") 'company-complete)
+            (diminish 'prettier-js-mode)
+            (diminish 'tree-sitter-mode)
+            (require 'mocha)
+            ;;(define-key js2-mode-map "\C-c\C-c" 'test-js)
+            ;;(define-key js2-mode-map "\C-cc" 'test-js)
+            (define-key typescript-mode-map "\C-ct" 'smart-test-file)
+            (define-key typescript-mode-map "\C-cd" 'bmac-test-dismiss)
+            ;;(define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
+            (define-key typescript-mode-map (kbd "RET") 'newline-and-indent)
+            (define-key typescript-mode-map "\C-c/" 'react-close-tag)
+            (define-key typescript-mode-map "\C-cd" 'duplicate-line)
+            ;; (define-key js2-mode-map "\C-cg" 'projectile-grep)
+            ;;(define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
+            ;; (define-key js2-mode-map (kbd "M-,") 'dumb-jump-back)
+            (font-lock-add-keywords
+             nil `(("\\(function\\)"
+                          (0 (progn (compose-region (match-beginning 1)
+                                                    (match-end 1) "\u0192")
+                                    nil)))))))
+
 
 
 
