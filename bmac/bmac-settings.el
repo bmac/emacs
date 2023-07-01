@@ -55,10 +55,6 @@
 ;;fundamental is kinda useless imo
 (setq default-major-mode 'text-mode)
 
-;; spelling helpers for text mode
-;; (add-hook 'text-mode-hook 'turn-on-flyspell)
-(add-hook 'text-mode-hook 'abbrev-mode)
-
 ;; Transparently open compressed files
 (auto-compression-mode t)
 
@@ -82,7 +78,7 @@
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; foward two
 
 ;; highlight the current line
-;; (global-hl-line-mode 1)
+(global-hl-line-mode 1)
 
 ;; Use system trash (for emacs 23)
 (setq delete-by-moving-to-trash t)
@@ -112,18 +108,6 @@
   :config
   (progn
     (global-git-gutter-mode t)))
-
-;; (use-package yahoo-weather
-;;   :defer 1
-;;   :init
-;;   (setq yahoo-weather-format "[%(weather) %(temperature)]")
-;;   (setq yahoo-weather-location "Boston")
-;;   (setq yahoo-weather-temperture-format "%d")
-;;   (setq yahoo-weather-use-F t)
-;;   :config
-;;   (yahoo-weather-mode)
-;;   )
-
 
 (use-package github-browse-file
   :bind (("C-x g h" . github-browse-file))
@@ -165,24 +149,6 @@
   :mode "\\.rpy\\'"
   :bind (("C-c C-c" . recompile)
          ("C-c c" . recompile)))
-
-(use-package dumb-jump
-  :bind (("M-." . dumb-jump-go)
-         ("M-," . dumb-jump-back)))
-
-(use-package crux
-  :bind (
-         ("C-c d" . crux-duplicate-current-line-or-region)
-         ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
-         ("C-c n" . crux-cleanup-buffer-or-region)
-         ("C-c s" . crux-swap-windows)
-         ))
-
-(use-package drag-stuff
-  :bind (
-         ("M-n" . drag-stuff-down)
-         ("M-p" . drag-stuff-up)
-         ))
 
 (setq ring-bell-function (lambda ()
                            (invert-face 'mode-line)

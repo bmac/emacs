@@ -7,20 +7,58 @@
                      `(:background ,bg-color :foreground ,bg-color)))
       (setq-local cursor-type nil)))
 
+(defun locate-dominating-file (file name)
+  "Look up the directory hierarchy from FILE for a directory containing NAME.
+Stop at the first parent directory containing a file NAME,
+and return the directory.  Return nil if not found.
+Instead of a string, NAME can also be a predicate taking one argument
+\(a directory) and returning a non-nil value if that directory is the one for
+which we're looking."
+  ;; copied from files.el (stripped comments) emacs-24 bzr branch 2014-03-28 10:20
+  (setq file (abbreviate-file-name file))
+  (let ((root nil)
+        try)
+    (while (not (or root
+                    (null file)
+                    (string-match locate-dominating-stop-dir-regexp file)))
+      (setq try (if (stringp name)
+                    (file-exists-p (expand-file-name name file))
+                  (funcall name file)))
+      (cond (try (setq root file))
+            ((equal file (setq file (file-name-directory
+                                     (directory-file-name file))))
+             (setq file nil))))
+    (and root (expand-file-name (file-name-as-directory root)))))
+
+(require 'cl-lib)
+(defun search-root-bottom-up (dir &optional list)
+  "Identify a project root in DIR by bottom-up search for files in LIST.
+If LIST is nil, use '.git' instead.
+Return the first (bottommost) matched directory or nil if not found."
+  (locate-dominating-file
+   dir
+   (lambda (directory)
+     (let ((files (mapcar (lambda (file) (expand-file-name file directory))
+                          (or list '(".git")))))
+       (cl-some (lambda (file) (and file (file-exists-p file))) files)))))
+
 (defun search-project ()
   (interactive)
-  (helm-ag (projectile-root-bottom-up default-directory '("package.json"))))
+  (helm-ag (search-root-bottom-up default-directory '("package.json"))))
 
 (defun search-parent-project ()
   (interactive)
-  (helm-ag (projectile-root-bottom-up default-directory '("lerna.json"))))
+  (helm-ag (search-root-bottom-up default-directory '("lerna.json"))))
 
-(use-package helm-config
+(use-package helm
   :bind (
          ("M-x" . helm-M-x)
          ("M-i" . helm-imenu)
          ("C-c h" . helm-ag)
          ("C-c y" . helm-resume)
+         ("C-c g" . search-project)
+         ("C-c f" . search-parent-project)
+         ("C-x f" . project-find-file)
          )
   :init (setq helm-prevent-escaping-from-minibuffer t
         helm-bookmark-show-location t
@@ -39,46 +77,3 @@
             'spacemacs//helm-hide-minibuffer-maybe)
   )
 
-
-(use-package projectile
-  :diminish projectile-mode
-  :bind (
-         ("C-c g" . search-project)
-         ("C-c f" . search-parent-project)
-         )
-  :init (require 'projectile)
-  :config
-  (setq
-   projectile-use-git-grep t)
-  (projectile-register-project-type 'webkit-py '("Tools" "LayoutTests")
-                                  ;; :compile "cmake"
-                                  :test "PYTHONPATH=./Tools/Scripts/ python -m unittest discover"
-                                  :test-suffix "_unittest")
-  (projectile-register-project-type 'npm '("package.json")
-                                                   :compile "npm install"
-                                                   :test "npm test"
-                                                   :run "npm run start"
-                                                   :test-suffix ".spec")
-  )
-
-(use-package helm-projectile
-  :bind (
-         ("C-x f" . helm-projectile-find-file)
-         )
-  :config
-  (setq
-   helm-projectile-fuzzy-match t
-   projectile-enable-caching t
-   )
-  (projectile-mode)
-  (helm-projectile-on)
-  (cl-callf append (alist-get 'filtered-candidate-transformer helm-source-find-files)
-  '(helm-adaptive-sort))
-
-(advice-add 'helm-execute-persistent-action :before
-            (defun $helm-adaptive-files-add (&rest _)
-              (when (and helm-adaptive-mode
-                         (equal "*helm find files*" helm-buffer))
-                (let (helm-adaptive-done)
-                  (helm-adaptive-store-selection)))))
-  )

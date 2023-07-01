@@ -92,26 +92,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
                                     ,(make-char 'greek-iso8859-7 107))
                     nil))))))
 
-(defun recompile-init ()
-  "Byte-compile all your dotfiles again"
-  (interactive)
-  (byte-recompile-directory dotfiles-dir 0))
-
-(defun insert-date ()
-  "Insert a time-stamp according to locale's date and time format."
-  (interactive)
-  (insert (format-time-string "%c" (current-time))))
-
-(defun bmac-smart-advance (point)
-  "Advances the point to after the next , ) \" or ; on the current line."
-  (interactive "d")
-  ;;narrow to line macro
-  (push-mark point)
-  (save-restriction
-    (narrow-to-region (line-beginning-position) (line-end-position))
-    ;;search foward till you find a , " ) or ;
-    (re-search-forward "[,);\"]")))
-
 (defun duplicate-line (arg)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")
@@ -159,14 +139,6 @@ If point was already at that position, move point to beginning of line."
          (beginning-of-line))))
 (global-set-key "\C-a" 'smart-beginning-of-line)
 
-(defun kill-other-buffers ()
-  "Kill all other buffers."
-  (interactive)
-  (mapc 'kill-buffer
-        (delq (current-buffer)
-              (remove-if-not 'buffer-file-name (buffer-list)))))
-
-
 (defun rotate-windows ()
   "Rotate your windows"
   (interactive)
@@ -191,11 +163,6 @@ If point was already at that position, move point to beginning of line."
              (set-window-start w1 s2)
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
-
-(defun next-10-lines ()
-  (next-line 10)
-)
-
 
 (defun open-journal (&optional arg)
   (interactive)

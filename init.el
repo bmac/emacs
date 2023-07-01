@@ -1,4 +1,7 @@
+(setq use-package-compute-statistics t)
 (setq gc-cons-threshold 64000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
 (add-hook 'after-init-hook (lambda ()
                              ;; restore after startup
                              (setq gc-cons-threshold 800000)))
@@ -40,9 +43,9 @@
 ;;use hippie expand instead of debbrev
 (load "bmac-hippie-expand.el")
 
-(load "bmac-javascript.el")
+;; (load "bmac-javascript.el")
 
-(load "bmac-rust.el")
+;; (load "bmac-rust.el")
 
 (load "bmac-helm.el")
 
@@ -62,14 +65,9 @@
  '(helm-match-item ((t (:foreground "#262626"))))
  '(helm-selection ((t nil)))
  '(helm-selection-line ((t (:background "#262626" :foreground "#262626"))))
- '(helm-source-header ((t nil)))
- '(magit-diff-added ((t (:foreground "#ddffdd"))))
- '(magit-diff-added-highlight ((t (:foreground "#8abc34"))))
- '(magit-diff-context-highlight ((t (:foreground "grey70"))))
- '(magit-diff-removed ((t (:foreground "#ffdddd"))))
- '(magit-diff-removed-highlight ((t (:foreground "#ff6454")))))
+ '(helm-source-header ((t nil))))
 
-;;(load "renpy.el")
+;; (load "renpy.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -83,4 +81,4 @@
  '(mocha-options "--watch --require ./test/setup.js" t)
  '(mocha-reporter "spec" t)
  '(package-selected-packages
-   '(eldoc-overlay typescript-mode projectile dash lsp-mode lsp-ui eglot rustic flycheck flycheck-rust auto-complete racer company tide spaceline rust-mode bpr helm-ag prettier-js neotree web-mode mocha yaml-mode use-package color-theme-solarized rjsx-mode python-mode markdown-mode helm-projectile github-browse-file git-gutter-fringe dumb-jump drag-stuff diminish crux)))
+   '(helm lsp-mode lsp-ui rustic flycheck flycheck-rust company helm-ag mocha use-package color-theme-solarized markdown-mode github-browse-file git-gutter-fringe diminish)))
