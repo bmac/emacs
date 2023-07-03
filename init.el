@@ -43,9 +43,11 @@
 ;;use hippie expand instead of debbrev
 (load "bmac-hippie-expand.el")
 
-;; (load "bmac-javascript.el")
+(load "bmac-lsp.el")
 
-;; (load "bmac-rust.el")
+(load "bmac-javascript.el")
+
+(load "bmac-rust.el")
 
 (load "bmac-helm.el")
 
@@ -81,4 +83,7 @@
  '(mocha-options "--watch --require ./test/setup.js" t)
  '(mocha-reporter "spec" t)
  '(package-selected-packages
-   '(helm lsp-mode lsp-ui rustic flycheck flycheck-rust company helm-ag mocha use-package color-theme-solarized markdown-mode github-browse-file git-gutter-fringe diminish)))
+   '(typescript-mode helm lsp-mode lsp-ui rustic flycheck flycheck-rust
+                     company helm-ag mocha use-package
+                     color-theme-solarized markdown-mode
+                     github-browse-file git-gutter-fringe diminish)))

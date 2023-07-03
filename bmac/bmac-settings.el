@@ -98,6 +98,7 @@
   (setq uniquify-ignore-buffers-re "^\\*")
   (setq uniquify-buffer-name-style 'forward))
 
+(setq global-linum-mode nil)
 (use-package git-gutter
   :diminish git-gutter-mode
   ;; :demand t

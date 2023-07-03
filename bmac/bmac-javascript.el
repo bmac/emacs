@@ -1,41 +1,4 @@
 ;(require 'mocha)
-(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
-
-;;http://steve-yegge.blogspot.com/2008/03/js2-mode-new-javascript-mode-for-emacs.html
-;; Now using fork from https://github.com/mooz/js2-mode
-;; emacs --batch -f batch-byte-compile js2-mode.el
-;;(setq js2-use-font-lock-faces t)
-;;(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx$" . rjsx-mode))
-;; (add-to-list 'auto-mode-alist '("\\.js$" . tide-mode))
-(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
-(setq js2-consistent-level-indent-inner-bracket-p t
-      js2-pretty-multiline-decl-indentation-p t
-      js2-cleanup-whitespace t
-      js2-enter-indents-newline t
-      js2-indent-on-enter-key nil
-      js2-basic-offset 4
-      jsx-indent-level 4
-      js-indent-level 4
-      js2-indent-switch-body t
-      js2-idle-timer-delay 0.2)
-
-
-
-;; from the Tide README
-(defun setup-tide-mode ()
-  "Set up Tide mode."
-  (interactive)
-  (tide-setup)
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (setq company-backends '(company-tide))
-  (setq company-tooltip-align-annotations t)
-  (company-mode +1)
-  )
-
 
 (setq mocha-command "time node_modules/.bin/mocha"
  mocha-environment-variables "BUILD_ENV=qa NODE_ENV=test"
@@ -46,130 +9,9 @@
  css-indent-offset 4)
 
 (setq compilation-scroll-output t)
-(defun test-js ()
-  (interactive)
-  (save-buffer)
-  (recompile t))
-
-;; jump to test file
-(defun test-js ()
-  (interactive)
-  (save-buffer)
-  (recompile t))
-
-(defun trim-test-js (filename)
-  (replace-regexp-in-string "\\(-test.js$\\)" ".js" filename)
-)
-
-(defun replace-test-with-app (filename)
-  (replace-regexp-in-string "\\(tests/unit\\)" "app" filename)
-)
-
-(defun replace-app-with-test (filename)
-  (replace-regexp-in-string "\\(/app/\\)" "/tests/unit/" filename)
-)
-
-(defun add-test-js (filename)
-  (replace-regexp-in-string "\\(.js$\\)" "-test.js" filename)
-)
-
-(defun get-app-file (filename)
-  (trim-test-js (replace-test-with-app filename))
-)
-
-(defun get-test-file (filename)
-  (add-test-js (replace-app-with-test filename))
-)
-
-(defun toggle-test-file ()
-  (interactive)
-  (let ((filename buffer-file-name)
-        (buffer-is-test-file (string/ends-with (buffer-file-name) "spec.js")))
-    (if buffer-is-test-file
-        (find-file (get-app-file filename))
-      (find-file (get-test-file filename))
-      )
-    )
-  )
-
-(defun toggle-test-file-other ()
-  (interactive)
-  (let ((filename buffer-file-name)
-        (buffer-is-test-file (string/ends-with (buffer-file-name) "test.js")))
-    (if buffer-is-test-file
-        (find-file-other-window (get-app-file filename))
-      (find-file-other-window (get-test-file filename))
-      )
-    )
-  )
-
-(defun string/ends-with (string suffix)
-      "Return t if STRING ends with SUFFIX."
-      (and (string-match (rx-to-string `(: ,suffix eos) t)
-                         string)
-           t))
-
-;; (defun mocha-test-file ()
-;;   "Test the current file."
-;;   (interactive)
-;;   (setq last-buffer-name (buffer-file-name))
-;;   (mocha-run (buffer-file-name)))
-
-
-;; (defun mocha-redo-last-command ()
-;;   "Test the current file."
-;;   (interactive)
-;;   (mocha-run last-buffer-name))
 
 ;; Do not pompt before killing process buffers
 (setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
-
-(defun mocha-run-or-reveal (buffer-file-name reveal)
-  (unless (get-buffer-window "*mocha tests*")
-    (window-configuration-to-register ?p)
-    )
-  (if (and reveal (get-buffer "*mocha tests*"))
-      (display-buffer "*mocha tests*" 'display-buffer-pop-up-frame)
-    (mocha-run buffer-file-name)
-    )
-  )
-
-(setq last-buffer-name nil)
-(defun save-and-test-file ()
-  "Test the current file."
-  (interactive)
-  (let ((old-buffer-name last-buffer-name))
-    (setq last-buffer-name (buffer-file-name))
-
-    (mocha-run-or-reveal (buffer-file-name) (string= old-buffer-name (buffer-file-name)))
-    )
-  )
-
-
-(defun test-last-file ()
-  "Test the current file."
-  (interactive)
-  (mocha-run-or-reveal last-buffer-name t))
-
-(defun smart-test-file ()
-  (interactive)
-  (let ((buffer-is-test-file (string/ends-with (buffer-file-name) "spec.js")))
-    (if buffer-is-test-file
-        (save-and-test-file)
-        (test-last-file)
-      )
-    )
-  )
-
-(defun bmac-test-dismiss ()
-  (interactive)
-  (jump-to-register ?p)
-  )
-
-
-(require 'prettier-js)
-(add-hook 'js2-mode-hook 'prettier-js-mode)
-
 
 (defun react-close-tag ()
   (interactive)
@@ -179,52 +21,34 @@
      (sgml-close-tag))))
 
 
-;; Use lambda for anonymous functions
-(add-hook 'js2-mode-hook
+(use-package tree-sitter
+  :ensure t
+  :config
+  ;; activate tree-sitter on any buffer containing code for which it has a parser available
+  (global-tree-sitter-mode)
+  ;; you can easily see the difference tree-sitter-hl-mode makes for python, ts or tsx
+  ;; by switching on and off
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+(use-package tree-sitter-langs
+  :ensure t
+  :after tree-sitter)
+
+(use-package typescript-mode
+  ;; :after tree-sitter
+  :mode ("\\.(t|j)sx?\\'" . typescript-mode)
+  :hook (typescript-mode . lsp-deferred)
+  :init (add-hook 'typescript-mode-hook
           (lambda ()
-            (diminish 'prettier-js-mode)
-            (require 'mocha)
-            ;;(define-key js2-mode-map "\C-c\C-c" 'test-js)
-            ;;(define-key js2-mode-map "\C-cc" 'test-js)
-            (define-key js2-mode-map "\C-ct" 'smart-test-file)
-            (define-key js2-mode-map "\C-cd" 'bmac-test-dismiss)
-            ;;(define-key js2-mode-map "\C-cr" 'toggle-test-file-other)
-            (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
-            (define-key js2-mode-map "\C-c/" 'react-close-tag)
-            (define-key js2-mode-map "\C-cd" 'duplicate-line)
-            ;; (define-key js2-mode-map "\C-cg" 'projectile-grep)
-            ;;(define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
-            ;; (define-key js2-mode-map (kbd "M-,") 'dumb-jump-back)
             (font-lock-add-keywords
              nil `(("\\(function\\)"
                           (0 (progn (compose-region (match-beginning 1)
                                                     (match-end 1) "\u0192")
                                     nil)))))))
-
-(add-hook 'rjsx-mode-hook
-          (lambda ()
-            (define-key rjsx-mode-map "<" 'self-insert-command)
-            (define-key rjsx-mode-map (kbd "C-d") 'duplicate-line)
-            (setup-tide-mode)
-            (diminish 'eldoc-mode)
-            (diminish 'compiling-mode)
-            (diminish 'company-mode)
-            (diminish 'tide-mode)
-            ;; (define-key tide-mode-map (kbd "M-.") 'dumb-jump-go)
-            (define-key tide-mode-map (kbd "\C-cm") 'company-complete)
-            )
-          )
-
-
-
-;; (defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
-;;   "Workaround sgml-mode and follow airbnb component style."
-;;   (let* ((cur-line (buffer-substring-no-properties
-;;                     (line-beginning-position)
-;;                     (line-end-position))))
-;;     (if (string-match "^\\( +\\)\/?> *$" cur-line)
-;;       (let* ((empty-spaces (match-string 1 cur-line)))
-;;         (replace-regexp empty-spaces
-;;                         (make-string (- (length empty-spaces) sgml-basic-offset) 32)
-;;                         nil
-;;                         (line-beginning-position) (line-end-position))))))
+  :config
+  (require 'mocha)
+  (define-key typescript-mode-map "\C-c/" 'react-close-tag)
+  (define-key typescript-mode-map "\C-cd" 'duplicate-line)
+  (define-key typescript-mode-map "\C-ct" 'smart-test-file)
+  (define-key typescript-mode-map "\C-ct" 'mocha-test-file)
+  )
