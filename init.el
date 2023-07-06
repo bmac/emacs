@@ -47,7 +47,7 @@
 
 (load "bmac-javascript.el")
 
-(load "bmac-rust.el")
+;; (load "bmac-rust.el")
 
 (load "bmac-helm.el")
 
@@ -78,12 +78,5 @@
  '(flymake-fringe-indicator-position 'left-fringe)
  '(helm-ag-ignore-patterns '("node_modules" "cache" ".log"))
  '(helm-ag-insert-at-point 'symbol)
- '(mocha-command "time node_modules/.bin/mocha" t)
- '(mocha-environment-variables "NODE_ENV=test" t)
- '(mocha-options "--watch --require ./test/setup.js" t)
- '(mocha-reporter "spec" t)
  '(package-selected-packages
-   '(typescript-mode helm lsp-mode lsp-ui rustic flycheck flycheck-rust
-                     company helm-ag mocha use-package
-                     color-theme-solarized markdown-mode
-                     github-browse-file git-gutter-fringe diminish)))
+   '(tree-sitter-langs tree-sitter typescript-mode helm lsp-mode lsp-ui rustic flycheck flycheck-rust company helm-ag mocha use-package color-theme-solarized markdown-mode github-browse-file git-gutter-fringe diminish)))

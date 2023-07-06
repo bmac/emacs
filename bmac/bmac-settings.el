@@ -90,13 +90,13 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; uniquify!
-(use-package uniquify
-  :config
-  (setq uniquify-buffer-name-style 'reverse)
-  (setq uniquify-separator "|")
-  (setq uniquify-after-kill-buffer-p t)
-  (setq uniquify-ignore-buffers-re "^\\*")
-  (setq uniquify-buffer-name-style 'forward))
+;; (use-package uniquify
+;;   :config
+;;   (setq uniquify-buffer-name-style 'reverse)
+;;   (setq uniquify-separator "|")
+;;   (setq uniquify-after-kill-buffer-p t)
+;;   (setq uniquify-ignore-buffers-re "^\\*")
+;;   (setq uniquify-buffer-name-style 'forward))
 
 (setq global-linum-mode nil)
 (use-package git-gutter
@@ -146,10 +146,10 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 
-(use-package renpy-mode
-  :mode "\\.rpy\\'"
-  :bind (("C-c C-c" . recompile)
-         ("C-c c" . recompile)))
+;; (use-package renpy-mode
+;;   :mode "\\.rpy\\'"
+;;   :bind (("C-c C-c" . recompile)
+;;          ("C-c c" . recompile)))
 
 (setq ring-bell-function (lambda ()
                            (invert-face 'mode-line)
