@@ -3,6 +3,9 @@
 
 (setq create-lockfiles nil)
 
+;; fix for https://github.com/emacs-lsp/lsp-mode/issues/3516
+(setq backup-by-copying t)
+
 ;; Don't make me type out 'yes' and 'no'
 (fset 'yes-or-no-p 'y-or-n-p)
 
