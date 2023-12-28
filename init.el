@@ -79,4 +79,4 @@
  '(helm-ag-ignore-patterns '("node_modules" "cache" ".log"))
  '(helm-ag-insert-at-point 'symbol)
  '(package-selected-packages
-   '(tree-sitter-langs tree-sitter typescript-mode helm lsp-mode lsp-ui rustic flycheck flycheck-rust company helm-ag mocha use-package color-theme-solarized markdown-mode github-browse-file git-gutter-fringe diminish)))
+   '(git-commit tree-sitter-langs tree-sitter typescript-mode helm lsp-mode lsp-ui rustic flycheck flycheck-rust company helm-ag mocha use-package color-theme-solarized markdown-mode github-browse-file git-gutter-fringe diminish)))
